@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+    <ImageView
+        android:layout_marginTop="70dp"
+        android:src="@mipmap/logohstalk2"
+        android:layout_width="100dp"
+        android:layout_height="114.16dp"/>
+    <TextView
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/intermedium"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textFontWeight="700"
+        android:lineHeight="30dp"
+        android:text="Đăng nhập"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="17dp"
+        android:text="Chọn phương thức đăng nhập dưới đây"
+        android:fontFamily="@font/intermedium"
+        android:textSize="13sp"
+        android:lineHeight="16dp"
+        android:textColor="@color/seconde_text_color"
+        android:textFontWeight="500"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

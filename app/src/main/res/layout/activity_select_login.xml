@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="26dp"
+    android:gravity="center_horizontal"
+    tools:context=".SelectLoginActivity">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header_login"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="59dp"
+        android:text="Đăng nhập bằng email"
+        android:paddingStart="32dp"
+        android:paddingRight="34dp"
+        android:drawableStart="@drawable/rezide_icon_fb"
+        android:fontFamily="@font/intermedium"
+        android:textFontWeight="700"
+        android:textSize="15dp"
+        android:lineHeight="18dp"
+        android:textColor="@drawable/color_text_pressed_login"
+        android:background="@drawable/button_select_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="30dp"
+        android:text="Đăng nhập bằng google"
+        android:paddingStart="32dp"
+        android:paddingRight="34dp"
+        android:drawableStart="@drawable/rezide_icon_gg"
+        android:fontFamily="@font/intermedium"
+        android:textFontWeight="700"
+        android:textSize="15dp"
+        android:lineHeight="18dp"
+        android:textColor="@drawable/color_text_pressed_login"
+        android:background="@drawable/button_select_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="30dp"
+        android:text="Đăng nhập bằng email"
+        android:paddingStart="32dp"
+        android:paddingRight="34dp"
+        android:drawableStart="@drawable/rezide_icon_human"
+        android:fontFamily="@font/intermedium"
+        android:textFontWeight="700"
+        android:textSize="15dp"
+        android:lineHeight="18dp"
+        android:textColor="@drawable/color_text_pressed_login"
+        android:background="@drawable/button_select_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="30dp"
+        android:text="Đăng nhập bằng facebook"
+        android:paddingStart="32dp"
+        android:paddingRight="34dp"
+        android:drawableStart="@drawable/rezide_icon_phone"
+        android:fontFamily="@font/intermedium"
+        android:textFontWeight="700"
+        android:textSize="15dp"
+        android:lineHeight="18dp"
+        android:textColor="@drawable/color_text_pressed_login"
+        android:background="@drawable/button_select_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>
