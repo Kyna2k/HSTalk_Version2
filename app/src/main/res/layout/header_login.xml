@@ -8,7 +8,6 @@
     android:gravity="center_horizontal"
     >
     <ImageView
-        android:layout_marginTop="70dp"
         android:src="@mipmap/logohstalk2"
         android:layout_width="100dp"
         android:layout_height="114.16dp"/>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HSTalk_Version2</string>
+    <string name="signButton">Bạn chưa có tài khoản? <font color="#3A9732">Đăng ký</font> </string>
 </resources>
