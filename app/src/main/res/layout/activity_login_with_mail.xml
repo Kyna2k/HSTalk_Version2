@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingHorizontal="36dp"
+
+    android:layout_height="match_parent"
+    tools:context=".views.LoginWithMailActivity">
+    <ImageView
+        android:layout_gravity="start"
+        android:layout_marginTop="31dp"
+        android:src="@mipmap/back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+    <include
+        android:layout_marginTop="39dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header_login"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_username"
+        style="@style/edit_dangky"
+        app:cornerRadius="16dp"
+        android:background="@drawable/forcus_edit"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:startIconDrawable="@mipmap/person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:maxLines="1"
+            android:fontFamily="@font/intermedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:lineHeight="18sp"
+            android:inputType="text"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/edit_dangky"
+        android:id="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:passwordToggleEnabled="true"
+        app:startIconDrawable="@mipmap/lock"
+        app:layout_constraintTop_toBottomOf="@+id/edt_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:maxLines="1"
+            android:fontFamily="@font/intermedium"
+            android:lineHeight="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
