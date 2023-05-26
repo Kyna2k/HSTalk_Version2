@@ -6,79 +6,96 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:paddingHorizontal="36dp"
-
     android:layout_height="match_parent"
     tools:context=".views.LoginWithMailActivity">
     <ImageView
+        android:id="@+id/btn_back"
         android:layout_gravity="start"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="43dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:src="@mipmap/back"
         android:layout_width="20dp"
         android:layout_height="20dp"/>
     <include
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/header_login"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_username"
-        style="@style/edit_dangky"
-        android:hint="Email"
-        app:startIconDrawable="@drawable/rezide_icon_human"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username"
-            android:maxLines="1"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/intermedium"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:lineHeight="18sp"
-            android:inputType="text"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/edit_dangky"
-        android:id="@+id/edt_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@drawable/toggle_password_tint"
-        app:startIconDrawable="@drawable/rezide_icon_lock"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:maxLines="1"
-            android:fontFamily="@font/intermedium"
-            android:lineHeight="18sp"
-            android:background="@android:color/transparent"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
+        android:layout_marginTop="38dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
         android:layout_weight="1"
         android:layout_height="wrap_content">
-        <Button
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingVertical="16dp"
-            android:id="@+id/btn_dangnhap"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_username"
+            style="@style/edit_dangky"
+            android:hint="Email"
+            app:startIconDrawable="@drawable/rezide_icon_human"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:maxLines="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/intermedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:lineHeight="18sp"
+                android:inputType="text"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/edit_dangky"
+            android:id="@+id/edt_pass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@drawable/toggle_password_tint"
+            app:startIconDrawable="@drawable/rezide_icon_lock"
+            app:layout_constraintTop_toBottomOf="@+id/edt_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:maxLines="1"
+                android:fontFamily="@font/intermedium"
+                android:lineHeight="18sp"
+                android:background="@android:color/transparent"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/btn_m_forgetpass"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:lineHeight="16sp"
+            android:text="Quên mật khẩu"
             android:fontFamily="@font/intermedium"
-            app:cornerRadius="10dp"
-            android:text="Đăng nhập" />
+            android:textSize="13sp"
+            android:textColor="@color/app_color"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:paddingVertical="16dp"
+        android:id="@+id/btn_dangnhap"
+        android:fontFamily="@font/intermedium"
+        app:cornerRadius="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="Đăng nhập" />
     <include
         android:layout_marginBottom="38dp"
         android:layout_width="wrap_content"

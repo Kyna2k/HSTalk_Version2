@@ -22,6 +22,12 @@ public class SelectLoginActivity extends AppCompatActivity {
                 startActivity(new Intent(SelectLoginActivity.this,LoginWithMailActivity.class));
             }
         });
+        bind.btnMLoginphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SelectLoginActivity.this,LoginWithPhoneActivity.class));
+            }
+        });
 
     }
 }

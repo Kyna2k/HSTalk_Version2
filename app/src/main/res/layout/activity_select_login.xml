@@ -4,85 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingHorizontal="26dp"
-    android:gravity="center_horizontal"
     tools:context=".views.SelectLoginActivity">
+
     <include
-        android:layout_marginTop="70dp"
+        layout="@layout/header_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/header_login"/>
+        android:layout_marginTop="70dp" />
+
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_m_loginemail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="59dp"
-            android:text="Đăng nhập bằng email"
-            android:paddingStart="32dp"
-            android:paddingRight="34dp"
+            android:background="@drawable/button_select_login"
             android:drawableStart="@drawable/rezide_icon_human"
             android:fontFamily="@font/intermedium"
-            android:textFontWeight="700"
-            android:textSize="15dp"
             android:lineHeight="18dp"
-            android:textColor="@drawable/color_text_pressed_login"
-            android:background="@drawable/button_select_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="30dp"
-            android:text="Đăng nhập bằng SĐT"
             android:paddingStart="32dp"
             android:paddingRight="34dp"
+            android:text="Đăng nhập bằng email"
+            android:textColor="@drawable/color_text_pressed_login"
+            android:textFontWeight="700"
+            android:textSize="15dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_m_loginphone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_select_login"
             android:drawableStart="@drawable/rezide_icon_phone"
             android:fontFamily="@font/intermedium"
-            android:textFontWeight="700"
-            android:textSize="15dp"
             android:lineHeight="18dp"
+            android:paddingStart="32dp"
+            android:paddingRight="34dp"
+            android:text="Đăng nhập bằng SĐT"
             android:textColor="@drawable/color_text_pressed_login"
-            android:background="@drawable/button_select_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:textFontWeight="700"
+            android:textSize="15dp" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_fb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="30dp"
-            android:text="Đăng nhập bằng email"
-            android:paddingStart="32dp"
-            android:paddingRight="34dp"
+            android:background="@drawable/button_select_login"
             android:drawableStart="@drawable/rezide_icon_fb"
             android:fontFamily="@font/intermedium"
-            android:textFontWeight="700"
-            android:textSize="15dp"
             android:lineHeight="18dp"
-            android:textColor="@drawable/color_text_pressed_login"
-            android:background="@drawable/button_select_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="30dp"
-            android:text="Đăng nhập bằng google"
             android:paddingStart="32dp"
             android:paddingRight="34dp"
+            android:text="Đăng nhập bằng email"
+            android:textColor="@drawable/color_text_pressed_login"
+            android:textFontWeight="700"
+            android:textSize="15dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_select_login"
             android:drawableStart="@drawable/rezide_icon_gg"
             android:fontFamily="@font/intermedium"
-            android:textFontWeight="700"
-            android:textSize="15dp"
             android:lineHeight="18dp"
+            android:paddingStart="32dp"
+            android:paddingRight="34dp"
+            android:text="Đăng nhập bằng google"
             android:textColor="@drawable/color_text_pressed_login"
-            android:background="@drawable/button_select_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:textFontWeight="700"
+            android:textSize="15dp" />
 
     </LinearLayout>
 
     <include
-        android:layout_marginBottom="38dp"
+        layout="@layout/bottom_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout="@layout/bottom_signin" />
+        android:layout_marginBottom="38dp" />
 </LinearLayout>

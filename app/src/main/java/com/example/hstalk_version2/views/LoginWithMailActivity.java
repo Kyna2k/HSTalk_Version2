@@ -42,5 +42,12 @@ public class LoginWithMailActivity extends AppCompatActivity {
                 }
             }
         });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 }
