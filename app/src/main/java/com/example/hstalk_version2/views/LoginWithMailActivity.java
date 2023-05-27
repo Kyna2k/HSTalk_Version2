@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityLoginWithMailBinding;
+import com.example.hstalk_version2.ultis.UI_Feature;
 
 public class LoginWithMailActivity extends AppCompatActivity {
     ActivityLoginWithMailBinding binding;
@@ -16,32 +17,8 @@ public class LoginWithMailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginWithMailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    Log.i("CHECKS", "onFocusChange: ");
-                    binding.edtUsername.setStartIconDrawable(null);
-                }else {
-                    if(!binding.username.getText().toString().equals("")) return;
-                    binding.edtUsername.setStartIconDrawable(R.drawable.rezide_icon_human);
-                }
-            }
-        });
-        binding.password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    Log.i("CHECKS", "onFocusChange: ");
-                    binding.edtPass.setStartIconDrawable(null);
-                }else {
-                    if(!binding.password.getText().toString().equals("")) return;
-                    binding.edtPass.setStartIconDrawable(R.drawable.rezide_icon_lock);
-                }
-            }
-        });
+        binding.username.setOnFocusChangeListener(onFocusChangeListener);
+        binding.password.setOnFocusChangeListener(onFocusChangeListener);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,4 +27,21 @@ public class LoginWithMailActivity extends AppCompatActivity {
         });
 
     }
+
+    View.OnFocusChangeListener onFocusChangeListener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View view, boolean b) {
+
+            switch (view.getId()){
+                case R.id.username:
+                    UI_Feature.show_hide_icon_edit(b,binding.edtUsername,binding.username,R.drawable.rezide_icon_human);
+                    break;
+                case R.id.password:
+                    UI_Feature.show_hide_icon_edit(b,binding.edtPass,binding.password,R.drawable.rezide_icon_lock);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + view.getId());
+            }
+        }
+    };
 }
