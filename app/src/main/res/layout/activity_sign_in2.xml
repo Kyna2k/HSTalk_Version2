@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingHorizontal="36dp"
+    tools:context=".views.SignIn2Activity">
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="43dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@mipmap/back" />
+
+    <ImageView
+        android:src="@mipmap/logohstalk2"
+        android:layout_width="100dp"
+        android:layout_height="114.16dp"/>
+    <TextView
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/intermedium"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textFontWeight="700"
+        android:lineHeight="30dp"
+        android:text="Đăng ký"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="17dp"
+        android:text="Nhập thông tin của bạn dưới đây"
+        android:fontFamily="@font/intermedium"
+        android:textSize="13sp"
+        android:lineHeight="16dp"
+        android:textColor="@color/seconde_text_color"
+        android:textFontWeight="500"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_pass_in_signin"
+        style="@style/edit_dangky"
+        android:hint="Mật khẩu"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@drawable/toggle_password_tint"
+        app:startIconDrawable="@drawable/rezide_icon_lock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass_in_signin"
+            android:maxLines="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/intermedium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:lineHeight="18sp"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_repass_in_signin"
+        style="@style/edit_dangky"
+        android:hint="Xác nhận mật khẩu"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@drawable/toggle_password_tint"
+        app:startIconDrawable="@drawable/rezide_icon_lock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repass_in_signin"
+            android:maxLines="1"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/intermedium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:lineHeight="18sp"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_marginTop="38dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingVertical="16dp"
+            android:id="@+id/btn_dangky"
+            android:fontFamily="@font/intermedium"
+            app:cornerRadius="10dp"
+            android:text="Đăng ký" />
+    </LinearLayout>
+</LinearLayout>

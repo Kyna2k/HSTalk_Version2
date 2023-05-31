@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingHorizontal="36dp"
+    tools:context=".views.ForgetPassActivity">
+    <LinearLayout
+        android:layout_marginTop="37dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="start|center_vertical"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@mipmap/back" />
+        <TextView
+            android:includeFontPadding="true"
+            android:text="Quên mật khẩu"
+            android:textColor="@color/black"
+            android:lineHeight="30dp"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/interbold"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="113dp"
+        android:includeFontPadding="true"
+        android:text="Tìm tài khoản của bạn"
+        android:textColor="@color/black"
+        android:lineHeight="24dp"
+        android:layout_gravity="start"
+        android:fontFamily="@font/interbold"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -64,7 +64,7 @@ public class SignInActivity extends AppCompatActivity {
         if(binding.phoneOrEmail.getText().toString().matches("\\d+")){
             startActivity(new Intent(SignInActivity.this, CheckOTPActivity.class));
         }else {
-
+            startActivity(new Intent(SignInActivity.this, SignIn2Activity.class));
         }
     }
 
