@@ -2,6 +2,7 @@ package com.example.hstalk_version2.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +26,19 @@ public class LoginWithMailActivity extends AppCompatActivity {
                 finish();
             }
         });
+        binding.btnMForgetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginWithMailActivity.this,ForgetPassActivity.class));
+            }
+        });
+        binding.btnBottomSign.btnMSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginWithMailActivity.this,SignInActivity.class));
 
+            }
+        });
     }
 
     View.OnFocusChangeListener onFocusChangeListener = new View.OnFocusChangeListener() {
