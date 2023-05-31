@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "775329249449",
+    "project_id": "hstalk-version2",
+    "storage_bucket": "hstalk-version2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775329249449:android:65a7e1c1d7e591ef2551b8",
+        "android_client_info": {
+          "package_name": "com.example.hstalk_version2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyM0-Z54abCmIym6wYAYvBtQvq8WzTw2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
