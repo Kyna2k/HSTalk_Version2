@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class BaseUser implements Serializable {
     private String mess;
     private User result;
+    private int status;
 
     public BaseUser() {
     }
@@ -12,6 +13,20 @@ public class BaseUser implements Serializable {
     public BaseUser(String mess, User result) {
         this.mess = mess;
         this.result = result;
+    }
+
+    public BaseUser(String mess, User result, int status) {
+        this.mess = mess;
+        this.result = result;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMess() {

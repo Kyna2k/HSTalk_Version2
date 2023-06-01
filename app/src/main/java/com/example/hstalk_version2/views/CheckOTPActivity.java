@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityCheckOtpactivityBinding;
+import com.example.hstalk_version2.model.user.BaseUser;
+import com.example.hstalk_version2.model.user.User;
+import com.example.hstalk_version2.services.API;
+import com.example.hstalk_version2.ultis.Loading;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -24,19 +29,27 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class CheckOTPActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
     ActivityCheckOtpactivityBinding binding;
-    String phonenumber;
+    Loading loading;
+    User user;
+    API api;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCheckOtpactivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        api = new API();
+        loading = new Loading();
         //Get Phone number
-        phonenumber = getIntent().getExtras().getString("number");
+        user = (User) getIntent().getExtras().getSerializable("user");
         //Firebase auth
         mAuth = FirebaseAuth.getInstance();
 
@@ -91,7 +104,7 @@ public class CheckOTPActivity extends AppCompatActivity {
                 mVerificationId = verificationId;
             }
         };
-        getOTP(phonenumber);
+        getOTP(user.getSdt());
 
     }
     private void getOTP(String phoneNumber) {
@@ -118,7 +131,9 @@ public class CheckOTPActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithCredential:success");
-                            FirebaseUser user = task.getResult().getUser();
+                            //Đăng nhập thành công lấy dữ liệu user truyền qua để set lên
+                            //Ở trang đăng ký hay đăng nhập OTP đều thế, có thông tin gì lấy thông tin đó
+                            login(user);
                             startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
                             // Update UI
                         } else {
@@ -130,5 +145,32 @@ public class CheckOTPActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void login(User _user){
+
+        new CompositeDisposable().add(api.getAPI().LoginWithPhone(_user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::dangnhap, this::loidangnhap)
+        );
+    }
+
+    private void loidangnhap(Throwable throwable) {
+        loading.LoadingDismi();
+        Log.e("TAG", "loidangnhap: ",throwable );
+    }
+
+    private void dangnhap(BaseUser baseUser) {
+        if(baseUser.getResult() != null)
+        {
+            SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("_id",baseUser.getResult().get_id());
+            editor.apply();
+            loading.LoadingDismi();
+            startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
+        }else {
+            loading.LoadingDismi();
+        }
     }
 }
