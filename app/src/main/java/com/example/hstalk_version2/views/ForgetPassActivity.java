@@ -8,9 +8,11 @@ import android.view.View;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityForgetPassBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetPassActivity extends AppCompatActivity {
     ActivityForgetPassBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

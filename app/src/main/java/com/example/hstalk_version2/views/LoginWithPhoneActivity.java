@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityLoginWithPhoneBinding;
 
 public class LoginWithPhoneActivity extends AppCompatActivity {
     ActivityLoginWithPhoneBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,14 @@ public class LoginWithPhoneActivity extends AppCompatActivity {
         binding.btnLayotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginWithPhoneActivity.this, CheckOTPActivity.class));
+                if(!binding.phone.getText().toString().equals("")){
+                    Intent intent =  new Intent(LoginWithPhoneActivity.this, CheckOTPActivity.class);
+                    intent.putExtra("number",binding.phone.getText().toString());
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(LoginWithPhoneActivity.this, "Vui long khong bo trong", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
