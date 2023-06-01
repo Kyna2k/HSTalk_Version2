@@ -42,6 +42,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
                 android:maxLines="1"
+                android:text="hocvien1"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/intermedium"
                 android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                 android:fontFamily="@font/intermedium"
                 android:lineHeight="18sp"
                 android:background="@android:color/transparent"
-
+                android:text="hocvien1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mật khẩu"
