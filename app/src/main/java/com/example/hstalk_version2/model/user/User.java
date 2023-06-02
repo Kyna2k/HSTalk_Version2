@@ -3,9 +3,9 @@ package com.example.hstalk_version2.model.user;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type;
+    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type,Facebook,Google,Otp;
 
-    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type) {
+    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type, String facebook, String google, String otp) {
         this._id = _id;
         Tenhocvien = tenhocvien;
         Gioitinh = gioitinh;
@@ -15,6 +15,33 @@ public class User implements Serializable {
         Avt = avt;
         TrangThai = trangThai;
         Type = type;
+        Facebook = facebook;
+        Google = google;
+        Otp = otp;
+    }
+
+    public String getFacebook() {
+        return Facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        Facebook = facebook;
+    }
+
+    public String getGoogle() {
+        return Google;
+    }
+
+    public void setGoogle(String google) {
+        Google = google;
+    }
+
+    public String getOtp() {
+        return Otp;
+    }
+
+    public void setOtp(String otp) {
+        Otp = otp;
     }
 
     public String get_id() {

@@ -46,7 +46,11 @@ public class LoginWithPhoneActivity extends AppCompatActivity {
                     Intent intent =  new Intent(LoginWithPhoneActivity.this, CheckOTPActivity.class);
                     User user = new User();
                     user.setSdt(binding.phone.getText().toString());
-                    intent.putExtra("user",user);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user",user);
+                    //ACtion 0 dang nhap
+                    bundle.putInt("ACTION",0);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
                     Toast.makeText(LoginWithPhoneActivity.this, "Vui long khong bo trong", Toast.LENGTH_SHORT).show();

@@ -148,7 +148,7 @@ public class CheckOTPActivity extends AppCompatActivity {
     }
     private void login(User _user){
 
-        new CompositeDisposable().add(api.getAPI().LoginWithPhone(_user)
+        new CompositeDisposable().add((getIntent().getExtras().getInt("ACTION") == 0 ? api.getAPI().LoginWithPhone(_user) : api.getAPI().SignIn(_user))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::dangnhap, this::loidangnhap)
@@ -167,10 +167,10 @@ public class CheckOTPActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
             editor.apply();
-            loading.LoadingDismi();
             startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
         }else {
-            loading.LoadingDismi();
         }
+        loading.LoadingDismi();
+
     }
 }

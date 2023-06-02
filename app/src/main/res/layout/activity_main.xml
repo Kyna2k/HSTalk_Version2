@@ -3,12 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:background="#A0A3B1"
+
+    android:layout_height="match_parent"
     tools:context=".views.MainActivity">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-
-
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottommenu"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_menu"
+        android:background="@drawable/background_menu"
+        android:paddingTop="20dp"
+        android:paddingBottom="11dp"
+        app:labelVisibilityMode="labeled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

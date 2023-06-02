@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/TrangChu"
+        android:title="Trang chủ"
+        android:icon="@drawable/group"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/Top"
+        android:title="Top 10"
+        android:icon="@drawable/group"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/GioHang"
+        android:title="Giỏ hàng"
+        android:icon="@drawable/group"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/DonHang"
+        android:title="Đơn hàng"
+        android:icon="@drawable/group"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/ThongTin"
+        android:title="Tài khoản"
+        android:icon="@drawable/group"
+        app:showAsAction="ifRoom"
+        />
+</menu>

@@ -15,7 +15,7 @@
         android:layout_gravity="start"
         android:layout_marginTop="43dp"
         android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:src="@mipmap/back" />
 
     <ImageView

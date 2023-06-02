@@ -8,7 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface API_SERVICES {
-    public static final String BASE_Service = "http://192.168.0.104:3000/api/";
+    public static final String BASE_Service = "http://192.168.0.101:3000/api/";
 
     @POST("login-with-email")
     Observable<BaseUser> LoginWithMail(@Body User user);
@@ -18,4 +18,8 @@ public interface API_SERVICES {
 
     @POST("sign-in-check")
     Observable<BaseUser> SignInCheck(@Body User user);
+
+    @POST("sign-in")
+    Observable<BaseUser> SignIn(@Body User user);
+
 }

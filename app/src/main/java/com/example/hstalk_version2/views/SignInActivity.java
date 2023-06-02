@@ -106,6 +106,8 @@ public class SignInActivity extends AppCompatActivity {
             user.setType("HOCVIEN");
             Bundle bundle = new Bundle();
             bundle.putSerializable("user",user);
+            //Action 1 dang ky
+            bundle.putInt("ACTION", 1);
             if(binding.phoneOrEmail.getText().toString().matches("\\d+")){
                 Intent intent = new Intent(SignInActivity.this, CheckOTPActivity.class);
                 intent.putExtras(bundle);
