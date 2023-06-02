@@ -17,10 +17,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottommenu"
         android:layout_gravity="bottom"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:menu="@menu/bottom_menu"
+        app:itemIconSize="31dp"
         android:background="@drawable/background_menu"
-        android:paddingTop="20dp"
-        android:paddingBottom="11dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="2dp"
+        android:layout_margin="16dp"
         app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

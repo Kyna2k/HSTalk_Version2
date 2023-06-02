@@ -13,7 +13,6 @@
     <ImageView
         android:layout_width="38.4dp"
         android:layout_height="50dp"
-        android:src="@mipmap/A"
         android:layout_gravity="center_vertical"
         />
     <LinearLayout

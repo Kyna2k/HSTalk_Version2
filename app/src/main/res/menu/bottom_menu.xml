@@ -3,31 +3,31 @@
     <item
         android:id="@+id/TrangChu"
         android:title="Trang chủ"
-        android:icon="@drawable/group"
+        android:icon="@drawable/selector_icon_group"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/Top"
         android:title="Top 10"
-        android:icon="@drawable/group"
+        android:icon="@drawable/selector_icon_phone"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/GioHang"
         android:title="Giỏ hàng"
-        android:icon="@drawable/group"
+        android:icon="@drawable/selector_icon_group2"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/DonHang"
         android:title="Đơn hàng"
-        android:icon="@drawable/group"
+        android:icon="@drawable/selector_icon_notifi"
         app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/ThongTin"
         android:title="Tài khoản"
-        android:icon="@drawable/group"
+        android:icon="@drawable/selector_icon_person"
         app:showAsAction="ifRoom"
         />
 </menu>
