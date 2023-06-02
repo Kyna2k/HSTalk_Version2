@@ -29,7 +29,10 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
+
     }
+
 }
 
 dependencies {
@@ -48,11 +51,22 @@ dependencies {
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
-
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    //Stringeee
+    implementation 'com.stringee.sdk.android:stringee-android-sdk:1.9.3'
+    //libs Token
+    implementation files('libs\\commons-codec-1.10.jar')
+    implementation files('libs\\jackson-core-2.7.4.jar')
+    implementation files('libs\\commons-logging-1.2.jar')
+    implementation files('libs\\jackson-annotations-2.7.0.jar')
+    implementation files('libs\\jackson-dataformat-yaml-2.6.5.jar')
+    implementation files('libs\\jackson-databind-2.7.4.jar')
+    implementation files('libs\\java-jwt-3.2.0.jar')
 }

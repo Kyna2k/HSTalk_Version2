@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#A0A3B1"
 
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_layout"
+        android:background="#A0A3B1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottommenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        app:menu="@menu/bottom_menu"
-        app:itemIconSize="31dp"
+        android:layout_margin="16dp"
         android:background="@drawable/background_menu"
         android:paddingTop="5dp"
         android:paddingBottom="2dp"
-        android:layout_margin="16dp"
+        app:itemIconSize="31dp"
         app:labelVisibilityMode="labeled"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>

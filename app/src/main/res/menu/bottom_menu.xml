@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/TrangChu"
-        android:title="Trang chủ"
+        android:id="@+id/KhoaHoc"
+        android:title="Khóa học"
         android:icon="@drawable/selector_icon_group"
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/Top"
-        android:title="Top 10"
+        android:id="@+id/Hotro"
+        android:title="Hổ trợ"
         android:icon="@drawable/selector_icon_phone"
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/GioHang"
-        android:title="Giỏ hàng"
+        android:id="@+id/MangXaHoi"
+        android:title="Mạng xã hội"
         android:icon="@drawable/selector_icon_group2"
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/DonHang"
-        android:title="Đơn hàng"
+        android:id="@+id/ThongBao"
+        android:title="Thông báo"
         android:icon="@drawable/selector_icon_notifi"
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/ThongTin"
-        android:title="Tài khoản"
+        android:id="@+id/HoSo"
+        android:title="Hồ sơ"
         android:icon="@drawable/selector_icon_person"
         app:showAsAction="ifRoom"
         />

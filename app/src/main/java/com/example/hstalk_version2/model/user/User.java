@@ -1,5 +1,20 @@
 package com.example.hstalk_version2.model.user;
 
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
+import com.example.hstalk_version2.R;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -118,5 +133,24 @@ public class User implements Serializable {
 
     public User() {
     }
+    @BindingAdapter({ "avatar" })
+    public static void loadImage(ImageView imageView, String imageURL) {
+        Glide.with(imageView.getContext())
+                .load(imageURL)
+                .placeholder(R.mipmap.avatar)
+                .addListener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        Log.e("Loi hinh", "onLoadFailed: ",e );
+                        return false;
+                    }
 
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        Log.e("Loi hinh", "onLoadFailed: "+ isFirstResource );
+                        return false;
+                    }
+                })
+                .into(imageView);
+    }
 }

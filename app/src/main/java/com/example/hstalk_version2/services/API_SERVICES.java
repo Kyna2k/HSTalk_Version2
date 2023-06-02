@@ -5,10 +5,11 @@ import com.example.hstalk_version2.model.user.User;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface API_SERVICES {
-    public static final String BASE_Service = "http://192.168.0.101:3000/api/";
+    public static final String BASE_Service = "http://192.168.0.105:3000/api/";
 
     @POST("login-with-email")
     Observable<BaseUser> LoginWithMail(@Body User user);
@@ -21,5 +22,8 @@ public interface API_SERVICES {
 
     @POST("sign-in")
     Observable<BaseUser> SignIn(@Body User user);
+
+    @GET("get-ds-hoc-vien")
+    Observable<BaseUser> GetDSHocVien();
 
 }
