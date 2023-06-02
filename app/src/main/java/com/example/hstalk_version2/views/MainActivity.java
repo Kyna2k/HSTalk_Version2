@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stringeeClient.connect(token_test);
+        stringeeClient.connect(token);
         stringeeClient.getUserId();
         int x = 2;
     }
