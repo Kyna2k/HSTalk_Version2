@@ -26,9 +26,9 @@
             android:layout_marginStart="18dp" />
 
         <ImageView
+            android:background="@drawable/border_teacher"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:id="@+id/avatar"
             bind:avatar="@{model.avt}"
             android:layout_marginStart="15dp" />
 

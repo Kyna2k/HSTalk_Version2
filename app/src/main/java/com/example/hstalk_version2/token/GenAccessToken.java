@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GenAccessToken {
-    private  static final String API_SID = "SK.0.Wrfver7ZWvtAxBqoxaXqsdpsTbkCIP1";
-    private static final String API_SerectKey = "QmdwQkxkZkE0WDM2Sk9zNzJFcWNPU1BzNXNiaHQyNTc=";
+    private  static final String API_SID = "SK.0.pyKowpHNdD1s2Ur4SpQFEAFAPy3hG71k";
+    private static final String API_SerectKey = "ZkE3SU80bU01VkdPMGpVWE5jS2V6cnNHTnlGWGVjQVo=";
     public static String genAccesToken(String user_id)
     {
         try{

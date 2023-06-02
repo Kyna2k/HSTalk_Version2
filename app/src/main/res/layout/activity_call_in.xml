@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.CallInActivity">
+    <FrameLayout
+        android:background="@drawable/background_callout"
+        android:id="@+id/video1_vao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:background="@color/black"
+        android:id="@+id/video2_vao"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/teal_700"
+        android:id="@+id/trangthai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_wait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trangthai"
+        tools:layout_editor_absoluteX="16dp">
+        <ImageView
+            android:id="@+id/huy"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/phone_call"
+            android:layout_marginEnd="150dp"
+            />
+        <ImageView
+            android:id="@+id/traloi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/accept_call"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_accept"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@drawable/background_select_call"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/mic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/mic" />
+        <ImageView
+            android:layout_marginStart="50dp"
+            android:id="@+id/kethuc"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/phone_call" />
+        <ImageView
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:id="@+id/doicam"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/switch_came" />
+        <ImageView
+            android:id="@+id/tatcam"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/video_came" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

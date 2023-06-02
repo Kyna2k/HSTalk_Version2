@@ -133,24 +133,14 @@ public class User implements Serializable {
 
     public User() {
     }
-    @BindingAdapter({ "avatar" })
-    public static void loadImage(ImageView imageView, String imageURL) {
-        Glide.with(imageView.getContext())
-                .load(imageURL)
-                .placeholder(R.mipmap.avatar)
-                .addListener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Log.e("Loi hinh", "onLoadFailed: ",e );
-                        return false;
-                    }
+    @BindingAdapter("avatar")
+    public static void loadImage(ImageView imageView, String avt) {
+        if(avt != null && !avt.equals(""))
+        {
+//           Cái ngành l này địt mẹ nó , bố mày mà lấy vợ giàu có cái l ngành
+            Glide.with(imageView.getContext()).load(avt).centerCrop()
+                    .into(imageView);
+        }
 
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Log.e("Loi hinh", "onLoadFailed: "+ isFirstResource );
-                        return false;
-                    }
-                })
-                .into(imageView);
     }
 }

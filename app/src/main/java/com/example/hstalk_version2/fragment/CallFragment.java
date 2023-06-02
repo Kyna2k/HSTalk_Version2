@@ -12,12 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hstalk_version2.adapter.Adapter_List_Call;
 import com.example.hstalk_version2.databinding.FragmentCallBinding;
+import com.example.hstalk_version2.handle.Handle_Call;
 import com.example.hstalk_version2.model.user.BaseUser;
 import com.example.hstalk_version2.model.user.User;
 import com.example.hstalk_version2.services.API;
+import com.example.hstalk_version2.views.CallOutActivity;
 import com.example.hstalk_version2.views.LoginWithMailActivity;
 import com.example.hstalk_version2.views.MainActivity;
 
@@ -27,7 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CallFragment extends Fragment {
+public class CallFragment extends Fragment implements Handle_Call {
     private FragmentCallBinding binding;
     private Adapter_List_Call adapter_list_call;
     API api;
@@ -73,8 +76,10 @@ public class CallFragment extends Fragment {
     }
     private void getData(ArrayList<User> ds)
     {
-        adapter_list_call = new Adapter_List_Call(ds,getActivity());
-        binding.listCall.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter_list_call = new Adapter_List_Call(ds,getActivity(),this::Call);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        binding.listCall.setLayoutManager(linearLayoutManager);
         binding.listCall.setAdapter(adapter_list_call);
     }
     private void GetList()
@@ -97,5 +102,14 @@ public class CallFragment extends Fragment {
             getData(baseUser.getList());
         }else {
         }
+    }
+
+    @Override
+    public void Call(String value, String name) {
+        Intent intent = new Intent(getActivity(), CallOutActivity.class);
+        intent.putExtra("from",MainActivity.stringeeClient.getUserId());
+        intent.putExtra("to",value);
+        intent.putExtra("name",name);
+        startActivity(intent);
     }
 }
