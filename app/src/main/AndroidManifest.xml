@@ -32,10 +32,10 @@
             android:name=".views.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".views.SelectLoginActivity"
+            android:name=".views.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.SelectLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

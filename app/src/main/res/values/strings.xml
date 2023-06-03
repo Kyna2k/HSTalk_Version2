@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">HSTalk_Version2</string>
     <string name="signButton">Bạn chưa có tài khoản? <font color="#3A9732">Đăng ký</font> </string>
+    <string name="default_web_client_id">48550167451-jv6r8h99a8evdhos7hpaa8o6umkjn0m8.apps.googleusercontent.com</string>
 </resources>
