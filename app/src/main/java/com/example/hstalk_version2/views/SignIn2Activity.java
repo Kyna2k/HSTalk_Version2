@@ -42,11 +42,19 @@ public class SignIn2Activity extends AppCompatActivity {
         binding.btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loading.LoadingShow(SignIn2Activity.this,"Đang xử lý");
                 User user = (User) getIntent().getExtras().getSerializable("user");
                 if(binding.passInSignin.getText().toString().equals(binding.repassInSignin.getText().toString()))
                 {
+
                     user.setPassword(binding.passInSignin.getText().toString());
-                    SignIn(user);
+                    if(getIntent().getExtras().getInt("ACTION") == 2)
+                    {
+                        resetpass(user);
+                    }else {
+                        SignIn(user);
+
+                    }
                 }
             }
         });
@@ -86,9 +94,34 @@ public class SignIn2Activity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
+            editor.putString("name",baseUser.getResult().getTenhocvien());
             editor.apply();
             startActivity(new Intent(SignIn2Activity.this,MainActivity.class));
         }else {
+        }
+        loading.LoadingDismi();
+
+    }
+    private void resetpass(User _user){
+
+        new CompositeDisposable().add(api.getAPI().resetpass(_user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::reset, this::loireset)
+        );
+    }
+
+    private void loireset(Throwable throwable) {
+        loading.LoadingDismi();
+        Log.e("TAG", "loidangnhap: ",throwable );
+    }
+
+    private void reset(BaseUser baseUser) {
+        if(baseUser.getMess() != null && baseUser.getStatus() == 1)
+        {
+            startActivity(new Intent(SignIn2Activity.this,LoginWithMailActivity.class));
+        }else {
+
         }
         loading.LoadingDismi();
 

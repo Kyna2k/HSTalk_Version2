@@ -27,4 +27,12 @@ public interface API_SERVICES {
     @GET("get-ds-hoc-vien")
     Observable<BaseUser> GetDSHocVien();
 
+    @POST("send-otp-code")
+    Observable<BaseUser> sendOtpCode(@Body User user);
+
+    @POST("check-otp-code")
+    Observable<BaseUser> checkOTP(@Body User user);
+
+    @POST("reset-password")
+    Observable<BaseUser> resetpass(@Body User user);
 }

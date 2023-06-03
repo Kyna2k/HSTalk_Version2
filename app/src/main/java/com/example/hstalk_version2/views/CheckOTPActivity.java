@@ -77,8 +77,16 @@ public class CheckOTPActivity extends AppCompatActivity {
         binding.btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loading.LoadingShow(CheckOTPActivity.this,"Đang xử lý");
                 String code = binding.otp.getText().toString();
-                setOTP(code);
+                if( getIntent().getExtras().getInt("ACTION") == 2)
+                {
+                    checkotp(user.getEmail(),binding.otp.getText()
+                            .toString());
+                }else {
+                    setOTP(code);
+
+                }
             }
         });
 
@@ -104,7 +112,11 @@ public class CheckOTPActivity extends AppCompatActivity {
                 mVerificationId = verificationId;
             }
         };
-        getOTP(user.getSdt());
+        if(getIntent().getExtras().getInt("ACTION") != 2)
+        {
+            getOTP(user.getSdt());
+        }
+
 
     }
     private void getOTP(String phoneNumber) {
@@ -166,8 +178,40 @@ public class CheckOTPActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
+            editor.putString("name",baseUser.getResult().getTenhocvien());
             editor.apply();
             startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
+        }else {
+        }
+        loading.LoadingDismi();
+
+    }
+    private void checkotp(String email, String OTP){
+        User _user = new User();
+        _user.setEmail(email);
+        _user.setOtp(OTP);
+        new CompositeDisposable().add(api.getAPI().checkOTP(_user)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::checkotpOk, this::checkotpNo)
+        );
+    }
+
+    private void checkotpNo(Throwable throwable) {
+        loading.LoadingDismi();
+        Log.e("TAG", "loidangnhap: ",throwable );
+    }
+
+    private void checkotpOk(BaseUser baseUser) {
+        if(baseUser.getMess() != null && baseUser.getStatus() == 1)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("user",user);
+            //Action reset pass
+            bundle.putInt("ACTION",2);
+            Intent intent = new Intent(CheckOTPActivity.this,SignIn2Activity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }else {
         }
         loading.LoadingDismi();

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".CallOutActivity">
+    tools:context=".views.CallOutActivity">
     <FrameLayout
         android:id="@+id/video1"
         android:layout_width="match_parent"
@@ -34,35 +34,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="#80000000"
+        android:id="@+id/list_chat"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/chat" />
+
+
+    <EditText
+        android:id="@+id/chat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/background_edt_video"
+        android:imeActionId="1"
+        android:imeOptions="actionSend"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="16dp" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_select_call"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_select_call"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <ImageView
             android:id="@+id/mic"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/mic" />
+
         <ImageView
-            android:layout_marginStart="50dp"
             android:id="@+id/huy"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/phone_call" />
-        <ImageView
             android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:src="@mipmap/phone_call" />
+
+        <ImageView
             android:id="@+id/doicam"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:src="@mipmap/switch_came" />
+
         <ImageView
             android:id="@+id/tatcam"
             android:layout_width="50dp"

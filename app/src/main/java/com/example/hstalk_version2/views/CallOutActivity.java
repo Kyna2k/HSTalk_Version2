@@ -1,15 +1,33 @@
 package com.example.hstalk_version2.views;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
+import com.example.hstalk_version2.adapter.Adapter_List_Chat;
+import com.example.hstalk_version2.model.Chat;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.stringee.call.StringeeCall2;
 import com.stringee.common.StringeeAudioManager;
 import com.stringee.listener.StatusListener;
@@ -17,7 +35,10 @@ import com.stringee.video.StringeeVideoTrack;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public class CallOutActivity extends AppCompatActivity {
     private StringeeCall2 stringeeCall2;
@@ -32,6 +53,12 @@ public class CallOutActivity extends AppCompatActivity {
     private StringeeCall2.MediaState mMediaState;
     private ImageView mic,doicam,tatcam;
     private StringeeAudioManager audioManager;
+    FirebaseFirestore database;
+    ArrayList<Chat> ds = new ArrayList<>();
+    Adapter_List_Chat adapter_list_chat;
+    RecyclerView listchat;
+    EditText edt_chat;
+    String id_rom_chat = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +70,17 @@ public class CallOutActivity extends AppCompatActivity {
         doicam = findViewById(R.id.doicam);
         mic = findViewById(R.id.mic);
         tatcam = findViewById(R.id.tatcam);
+        listchat = findViewById(R.id.list_chat);
+        edt_chat = findViewById(R.id.chat);
         from =getIntent().getStringExtra("from");
         to =getIntent().getStringExtra("to");
         name = getIntent().getStringExtra("name");
+        //Kết nối với database hiện tại
+        database = FirebaseFirestore.getInstance();
+        //ReadDatabaseOnTime();
+
         goithoi();
+
         huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +133,80 @@ public class CallOutActivity extends AppCompatActivity {
                 }
             }
         });
+        edt_chat.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Log.e("DEOHIEU", "onEditorAction: " + i);
+                if(i == EditorInfo.IME_ACTION_SEND)
+                {
+                    if(!edt_chat.getText().toString().equals(""))
+                    {
+                        addChat();
+                    }
+                    return true;
+                }else {
+                    Log.e("DEOHIEU", "onEditorAction: ");
+                }
+                return false;
+            }
+        });
 
+        getData();
+
+    }
+    public void getData()
+    {
+        adapter_list_chat = new Adapter_List_Chat(this,ds);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        listchat.setLayoutManager(linearLayoutManager);
+        listchat.setAdapter(adapter_list_chat);
+    }
+    private void ReadDatabaseRealTime() {
+        database.collection(id_rom_chat)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e("LoiRealtime", "Listen failed.", error);
+                            return;
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges())
+                        {
+                            switch (dc.getType())
+                            {
+                                case ADDED:
+                                    ds.add(dc.getDocument().toObject(Chat.class));
+                                    adapter_list_chat.notifyDataSetChanged();
+                                    listchat.smoothScrollToPosition(ds.size()-1);
+                                    break;
+                            }
+                        }
+                    }
+                });
+    }
+    private void addChat()
+    {
+        if(id_rom_chat.equals("")) return;
+        String noidung = edt_chat.getText().toString();
+        String ten = getSharedPreferences("HocVien",MODE_PRIVATE).getString("name","LAN ANH");
+        String id = UUID.randomUUID().toString();
+        Chat chat = new Chat(id,ten,noidung);
+        Map mapchat = chat.ToMap();
+        database.collection(id_rom_chat).document(id).set(mapchat)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("CHAT", "onSuccess: ");
+                        edt_chat.setText("");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CallOutActivity.this, "That bai", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
     private void goithoi()
     {
@@ -195,6 +302,10 @@ public class CallOutActivity extends AppCompatActivity {
 
                     }
                 });
+
+                id_rom_chat = stringeeCall22.getCallId();
+                ReadDatabaseRealTime();
+
             }
 
             @Override
@@ -229,5 +340,11 @@ public class CallOutActivity extends AppCompatActivity {
         audioManager.setSpeakerphoneOn(stringeeCall2.isVideoCall());
         stringeeCall2.setQuality(StringeeCall2.VideoQuality.QUALITY_720P);
         stringeeCall2.makeCall(null);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+
     }
 }

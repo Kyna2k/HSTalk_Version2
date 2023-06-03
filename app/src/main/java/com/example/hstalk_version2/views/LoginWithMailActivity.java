@@ -103,6 +103,7 @@ public class LoginWithMailActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
+            editor.putString("name",baseUser.getResult().getTenhocvien());
             editor.apply();
             loading.LoadingDismi();
             startActivity(new Intent(LoginWithMailActivity.this,MainActivity.class));
