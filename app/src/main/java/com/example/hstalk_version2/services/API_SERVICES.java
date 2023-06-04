@@ -1,5 +1,8 @@
 package com.example.hstalk_version2.services;
 
+import com.example.hstalk_version2.model.baihoc.BaseBaiHoc;
+import com.example.hstalk_version2.model.khoahoc.CapHoc;
+import com.example.hstalk_version2.model.khoahoc.ResultKhoaHoc;
 import com.example.hstalk_version2.model.user.BaseUser;
 import com.example.hstalk_version2.model.user.User;
 
@@ -9,8 +12,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface API_SERVICES {
-    //public static final String BASE_Service = "http://192.168.0.105:3000/api/";
-    public static final String BASE_Service = "https://kynalab.com/api/";
+    public static final String BASE_Service = "http://192.168.0.105:3000/api/";
+    //public static final String BASE_Service = "https://kynalab.com/api/";
 
     @POST("login-with-email")
     Observable<BaseUser> LoginWithMail(@Body User user);
@@ -35,4 +38,10 @@ public interface API_SERVICES {
 
     @POST("reset-password")
     Observable<BaseUser> resetpass(@Body User user);
+
+    @POST("get-danh-sach-cap-hoc")
+    Observable<ResultKhoaHoc> danhsachcaphoc(@Body User user);
+
+    @POST("get-danh-sach-bai-hoc-theo-cap")
+    Observable<BaseBaiHoc> danhsachbaihoctheocap(@Body CapHoc capHoc);
 }

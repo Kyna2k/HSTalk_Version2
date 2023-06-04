@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="model"
@@ -8,6 +9,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
+        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,16 +23,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/btn_caphoc"
             android:layout_width="0dp"
             android:layout_marginStart="10dp"
             android:layout_height="0dp"
             app:cardCornerRadius="12dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                bind:urlbackground="@{model.capHoc.hinhanh}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <LinearLayout
-                android:background=""
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:paddingHorizontal="16dp"
@@ -40,18 +48,17 @@
                     android:layout_marginTop="24dp"
                     android:id="@+id/progressBar2"
                     android:max="100"
-                    android:progress="45"
                     android:progressDrawable="@drawable/custom_processbar_horizone"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     />
                 <TextView
+                    android:id="@+id/tiendo"
                     android:fontFamily="@font/interbold"
                     android:textSize="12sp"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/white"
-                    android:text="80%"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -60,7 +67,7 @@
                     android:textSize="24sp"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/white"
-                    android:text="Level 1"
+                    android:text="@{model.capHoc.tencaphoc}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView

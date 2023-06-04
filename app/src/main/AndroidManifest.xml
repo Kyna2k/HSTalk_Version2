@@ -26,6 +26,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".views.HocBaiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.DanhSachBaiHocActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.CallOutActivity"
             android:exported="false" />
         <activity

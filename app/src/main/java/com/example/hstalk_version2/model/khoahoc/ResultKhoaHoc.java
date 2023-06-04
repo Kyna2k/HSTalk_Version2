@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ResultKhoaHoc implements Serializable {
+
     private ArrayList<BaseKhoaHoc> result;
+
+    public ResultKhoaHoc() {
+    }
 
     public ResultKhoaHoc(ArrayList<BaseKhoaHoc> result) {
         this.result = result;

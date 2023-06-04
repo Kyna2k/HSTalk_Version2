@@ -43,14 +43,5 @@ public class CapHoc implements Serializable {
     public void setHinhanh(String hinhanh) {
         Hinhanh = hinhanh;
     }
-    @BindingAdapter("urlbackground")
-    public static void loadImage(ImageView imageView, String avt) {
-        if(avt != null && !avt.equals(""))
-        {
-//           Cái ngành l này địt mẹ nó , bố mày mà lấy vợ giàu có cái l ngành
-            Glide.with(imageView.getContext()).load(avt)
-                    .into(imageView);
-        }
 
-    }
 }
