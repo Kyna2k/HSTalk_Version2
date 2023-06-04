@@ -26,6 +26,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".views.KiemTraBaiTapActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.HocBaiActivity"
             android:exported="false" />
         <activity

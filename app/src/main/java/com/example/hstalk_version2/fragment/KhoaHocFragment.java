@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.hstalk_version2.R;
@@ -35,7 +36,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class KhoaHocFragment extends Fragment {
+public class KhoaHocFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
     FragmentKhoahocBinding binding;
     Adapter_List_CapHoc adapter_list_capHoc;
     Loading loading;
@@ -78,9 +79,12 @@ public class KhoaHocFragment extends Fragment {
         Glide.with(getActivity()).load(avatar.equals("")? R.drawable.avatar_df:avatar).circleCrop().into(binding.avatar);
         loading.LoadingShow(getContext(),"Đang tải dự liệu");
         getDS();
+        binding.reload.setOnRefreshListener(this);
+
 
     }
     private void getDS(){
+        binding.reload.setRefreshing(true);
         User _user = new User();
         _user.set_id(getActivity().getSharedPreferences("HocVien",MODE_PRIVATE).getString("_id","LAN ANH"));
         new CompositeDisposable().add(api.getAPI().danhsachcaphoc(_user)
@@ -93,6 +97,7 @@ public class KhoaHocFragment extends Fragment {
     private void checkotpNo(Throwable throwable) {
         loading.LoadingDismi();
         Log.e("TAG", "loidangnhap: ",throwable );
+        binding.reload.setRefreshing(false);
     }
 
     private void checkotpOk(ResultKhoaHoc resultKhoaHoc) {
@@ -102,6 +107,7 @@ public class KhoaHocFragment extends Fragment {
         }else {
         }
         loading.LoadingDismi();
+        binding.reload.setRefreshing(false);
 
     }
     private void getData(ArrayList<BaseKhoaHoc> baseKhoaHoc)
@@ -111,5 +117,10 @@ public class KhoaHocFragment extends Fragment {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         binding.listCaphoc.setLayoutManager(linearLayoutManager);
         binding.listCaphoc.setAdapter(adapter_list_capHoc);
+    }
+
+    @Override
+    public void onRefresh() {
+        getDS();
     }
 }

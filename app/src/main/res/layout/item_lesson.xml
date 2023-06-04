@@ -45,7 +45,7 @@
                 android:textSize="12dp" />
         </LinearLayout>
         <Button
-
+            android:id="@+id/btn_kiemtra"
             android:textSize="14sp"
             android:text="Kiểm tra"
             android:layout_width="80dp"

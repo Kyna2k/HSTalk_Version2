@@ -16,6 +16,7 @@ import com.example.hstalk_version2.databinding.ItemCaphocBinding;
 import com.example.hstalk_version2.databinding.ItemLessonBinding;
 import com.example.hstalk_version2.model.baihoc.BaiHoc;
 import com.example.hstalk_version2.views.HocBaiActivity;
+import com.example.hstalk_version2.views.KiemTraBaiTapActivity;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,16 @@ public class Adapter_List_BaiHoc extends RecyclerView.Adapter<Adapter_List_BaiHo
             public void onClick(View view) {
                 Intent intent = new Intent(context, HocBaiActivity.class);
                 intent.putExtra("link",ds.get(holder.getAdapterPosition()).getVideo());
+                (context).startActivity(intent);
+            }
+        });
+        holder.binding.btnKiemtra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, KiemTraBaiTapActivity.class);
+                intent.putExtra("debai",ds.get(holder.getAdapterPosition()).getBaitap());
+                intent.putExtra("caphoc",ds.get(holder.getAdapterPosition()).getMacaphoc());
+                intent.putExtra("mabaihoc",ds.get(holder.getAdapterPosition()).get_id());
                 (context).startActivity(intent);
             }
         });

@@ -3,6 +3,8 @@ package com.example.hstalk_version2.services;
 import com.example.hstalk_version2.model.baihoc.BaseBaiHoc;
 import com.example.hstalk_version2.model.khoahoc.CapHoc;
 import com.example.hstalk_version2.model.khoahoc.ResultKhoaHoc;
+import com.example.hstalk_version2.model.trangthai.BaseTrangThai;
+import com.example.hstalk_version2.model.trangthai.TrangThaiRe;
 import com.example.hstalk_version2.model.user.BaseUser;
 import com.example.hstalk_version2.model.user.User;
 
@@ -44,4 +46,7 @@ public interface API_SERVICES {
 
     @POST("get-danh-sach-bai-hoc-theo-cap")
     Observable<BaseBaiHoc> danhsachbaihoctheocap(@Body CapHoc capHoc);
+    @POST("add-trang-thai-hoc")
+    Observable<BaseTrangThai> addtranthaihoc(@Body TrangThaiRe trangThaiRe);
+
 }
