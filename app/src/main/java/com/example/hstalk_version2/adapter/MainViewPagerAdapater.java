@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.hstalk_version2.fragment.CallFragment;
+import com.example.hstalk_version2.fragment.KhoaHocFragment;
 
 public class MainViewPagerAdapater extends FragmentStateAdapter {
     public MainViewPagerAdapater(@NonNull FragmentActivity fragmentActivity) {
@@ -18,7 +19,7 @@ public class MainViewPagerAdapater extends FragmentStateAdapter {
         switch (position)
         {
             case 0:
-                return new CallFragment().getInstance();
+                return new KhoaHocFragment().getInstance();
             case 1:
                 return new CallFragment().getInstance();
             default:

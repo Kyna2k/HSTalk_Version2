@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="model"
+            type="com.example.hstalk_version2.model.khoahoc.BaseKhoaHoc" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{model.tiendo != 0 ? @drawable/add_lv : @drawable/block_lv }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:background=""
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/progressBar2"
+                    android:max="100"
+                    android:progress="45"
+                    android:progressDrawable="@drawable/custom_processbar_horizone"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    />
+                <TextView
+                    android:fontFamily="@font/interbold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:text="80%"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:fontFamily="@font/interbold"
+                    android:textSize="24sp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/white"
+                    android:text="Level 1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/interregular"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:text="Basic"
+                    android:layout_marginBottom="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

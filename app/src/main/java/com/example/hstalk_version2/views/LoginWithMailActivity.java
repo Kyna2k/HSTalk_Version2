@@ -104,6 +104,7 @@ public class LoginWithMailActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
             editor.putString("name",baseUser.getResult().getTenhocvien());
+            editor.putString("avatar",baseUser.getResult().getAvt());
             editor.apply();
             loading.LoadingDismi();
             startActivity(new Intent(LoginWithMailActivity.this,MainActivity.class));

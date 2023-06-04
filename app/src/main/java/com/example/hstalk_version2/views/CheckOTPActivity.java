@@ -179,6 +179,7 @@ public class CheckOTPActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("_id",baseUser.getResult().get_id());
             editor.putString("name",baseUser.getResult().getTenhocvien());
+            editor.putString("avatar",baseUser.getResult().getAvt());
             editor.apply();
             startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
         }else {
