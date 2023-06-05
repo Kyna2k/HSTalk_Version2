@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.hstalk_version2.adapter.Adapter_List_Call;
 import com.example.hstalk_version2.databinding.FragmentCallBinding;
@@ -30,10 +31,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CallFragment extends Fragment implements Handle_Call {
+public class CallFragment extends Fragment implements Handle_Call, SwipeRefreshLayout.OnRefreshListener{
     private FragmentCallBinding binding;
     private Adapter_List_Call adapter_list_call;
     API api;
+
     public void CallFragment()
     {
 
@@ -66,6 +68,7 @@ public class CallFragment extends Fragment implements Handle_Call {
         super.onViewCreated(view, savedInstanceState);
         api = new API();
         GetList();
+        binding.reload.setOnRefreshListener(this);
 
     }
 
@@ -76,6 +79,7 @@ public class CallFragment extends Fragment implements Handle_Call {
     }
     private void getData(ArrayList<User> ds)
     {
+
         adapter_list_call = new Adapter_List_Call(ds,getActivity(),this::Call);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -84,6 +88,7 @@ public class CallFragment extends Fragment implements Handle_Call {
     }
     private void GetList()
     {
+        binding.reload.setRefreshing(true);
         new CompositeDisposable().add(api.getAPI().GetDSHocVien()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -94,6 +99,7 @@ public class CallFragment extends Fragment implements Handle_Call {
     private void loidangnhap(Throwable throwable)
     {
         Log.e("TAG", "loidangnhap: ",throwable );
+        binding.reload.setRefreshing(false);
     }
 
     private void dangnhap(BaseUser baseUser) {
@@ -102,6 +108,7 @@ public class CallFragment extends Fragment implements Handle_Call {
             getData(baseUser.getList());
         }else {
         }
+        binding.reload.setRefreshing(false);
     }
 
     @Override
@@ -111,5 +118,10 @@ public class CallFragment extends Fragment implements Handle_Call {
         intent.putExtra("to",value);
         intent.putExtra("name",name);
         startActivity(intent);
+    }
+
+    @Override
+    public void onRefresh() {
+        GetList();
     }
 }
