@@ -138,7 +138,8 @@ public class User implements Serializable {
         if(avt != null && !avt.equals(""))
         {
 //           Cái ngành l này địt mẹ nó , bố mày mà lấy vợ giàu có cái l ngành
-            Glide.with(imageView.getContext()).load(avt).centerCrop()
+            Glide.with(imageView.getContext()).load(avt).centerCrop().circleCrop()
+                    .placeholder(R.drawable.avatar_df)
                     .into(imageView);
         }
 
