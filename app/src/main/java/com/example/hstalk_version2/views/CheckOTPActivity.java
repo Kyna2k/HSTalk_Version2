@@ -180,6 +180,8 @@ public class CheckOTPActivity extends AppCompatActivity {
             editor.putString("_id",baseUser.getResult().get_id());
             editor.putString("name",baseUser.getResult().getTenhocvien());
             editor.putString("avatar",baseUser.getResult().getAvt());
+            editor.putString("gioitinh",baseUser.getResult().getGioitinh());
+
             editor.apply();
             startActivity(new Intent(CheckOTPActivity.this,MainActivity.class));
         }else {

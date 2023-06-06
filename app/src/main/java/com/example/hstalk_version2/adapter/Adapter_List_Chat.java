@@ -39,6 +39,7 @@ public class Adapter_List_Chat extends RecyclerView.Adapter<Adapter_List_Chat.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(ds.get(position));
 
+
     }
 
     @Override

@@ -49,6 +49,9 @@ public class Adapter_List_Call extends  RecyclerView.Adapter<Adapter_List_Call.V
                 call.Call(ds.get(holder.getAdapterPosition()).get_id(),ds.get(holder.getAdapterPosition()).getTenhocvien());
             }
         });
+        String[] names = ds.get(position).getTenhocvien().split("\\s+");
+
+        holder.binding.ten.setText(names.length == 1 ? names[0] : names[names.length-1]);
     }
 
     @Override

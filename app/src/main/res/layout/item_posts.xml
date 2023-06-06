@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.hstalk_version2.model.baiviet.BaseBaiViet" />
+    </data>
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -14,7 +22,7 @@
             <ImageView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:src="@mipmap/avatar" />
+                bind:avatar="@{model.user.avt}"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -23,11 +31,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ChiCao"
+                    android:text="@{model.user.tenhocvien}"
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:fontFamily="@font/intermedium" />
                 <TextView
+                    android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1 giờ trước"
@@ -40,11 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"
-            android:text="Tôi tên là Nguyễn Chí Cao, xin chào các bạn sử dụng HSTalk"
+            android:text="@{model.baiviet.noidung}"
             android:textColor="@color/black"
             android:textSize="16dp" />
         <ImageView
+            android:layout_marginTop="11dp"
+            bind:hinhanh="@{model.baiviet.hinhanh}"
             android:layout_width="match_parent"
+            android:adjustViewBounds="true"
             android:layout_height="wrap_content"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,10 +70,10 @@
                 android:textSize="14dp"
                 android:layout_marginEnd="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/soluongbinhluan"
                 app:layout_constraintTop_toTopOf="parent" />
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/soluongbinhluan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100 bình luận"
@@ -74,20 +86,25 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.8dp"
             android:background="#7B7B7B" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginVertical="11dp">
+            >
             <LinearLayout
+
+                android:id="@+id/btn_like"
                 android:layout_weight="1"
                 android:layout_width="0dp"
+                android:paddingVertical="11dp"
+                android:foreground="?attr/selectableItemBackground"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
                 <ImageView
+                    android:id="@+id/ic_like"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:src="@mipmap/like"/>
@@ -101,8 +118,10 @@
                     android:layout_marginStart="14dp" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btn_comment"
                 android:layout_weight="1"
                 android:layout_width="0dp"
+                android:paddingVertical="11dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
                 <ImageView

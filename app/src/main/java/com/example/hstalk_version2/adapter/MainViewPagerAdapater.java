@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.hstalk_version2.fragment.BaiVietFragment;
 import com.example.hstalk_version2.fragment.CallFragment;
 import com.example.hstalk_version2.fragment.KhoaHocFragment;
 
@@ -22,8 +23,10 @@ public class MainViewPagerAdapater extends FragmentStateAdapter {
                 return new KhoaHocFragment().getInstance();
             case 1:
                 return new CallFragment().getInstance();
+            case 2:
+                return new BaiVietFragment().getInstance();
             default:
-                return new CallFragment().getInstance();
+                return new KhoaHocFragment().getInstance();
         }
     }
 

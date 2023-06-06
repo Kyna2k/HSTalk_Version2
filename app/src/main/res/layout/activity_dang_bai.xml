@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.DangBaiActivity"
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingHorizontal="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btn_back"
+                android:src="@mipmap/back_2"
+                android:layout_width="10dp"
+                android:layout_height="16dp"/>
+            <TextView
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/interbold"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="Đăng tin"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_dangbai"
+                android:textSize="18sp"
+                android:text="Đăng"
+                android:paddingVertical="4dp"
+                android:paddingHorizontal="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:src="@drawable/avatar_df"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ten"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/interbold"
+                android:text="Đăng tin"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/giotinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="Nam"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/ten"
+                app:layout_constraintTop_toBottomOf="@+id/ten" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:textColor="@color/black"
+            android:hint="Bạn đang nghĩ gì?"
+            android:id="@+id/noidung"
+            android:layout_marginTop="21dp"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:id="@+id/hinh"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:id="@+id/btn_themhinh"
+            android:layout_gravity="center"
+            android:src="@drawable/btn_danghinh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,6 +1,9 @@
 package com.example.hstalk_version2.services;
 
 import com.example.hstalk_version2.model.baihoc.BaseBaiHoc;
+import com.example.hstalk_version2.model.baiviet.BaiViet;
+import com.example.hstalk_version2.model.baiviet.ResBaiViet;
+import com.example.hstalk_version2.model.baiviet.ResBaiViet2;
 import com.example.hstalk_version2.model.khoahoc.CapHoc;
 import com.example.hstalk_version2.model.khoahoc.ResultKhoaHoc;
 import com.example.hstalk_version2.model.trangthai.BaseTrangThai;
@@ -9,9 +12,13 @@ import com.example.hstalk_version2.model.user.BaseUser;
 import com.example.hstalk_version2.model.user.User;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface API_SERVICES {
     public static final String BASE_Service = "http://192.168.0.105:3000/api/";
@@ -48,5 +55,13 @@ public interface API_SERVICES {
     Observable<BaseBaiHoc> danhsachbaihoctheocap(@Body CapHoc capHoc);
     @POST("add-trang-thai-hoc")
     Observable<BaseTrangThai> addtranthaihoc(@Body TrangThaiRe trangThaiRe);
+
+    @GET("danh-sach-bai-viet")
+    Observable<ResBaiViet> getdanhsachbaiviet();
+
+    @Multipart
+    @POST("add-bai-viet")
+    Observable<ResBaiViet2> addbaiviet(@Part("Mauser")RequestBody Mauser, @Part("Noidung") RequestBody Noidung, @Part MultipartBody.Part Hinhanh);
+
 
 }

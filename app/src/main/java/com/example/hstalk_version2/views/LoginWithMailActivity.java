@@ -105,6 +105,7 @@ public class LoginWithMailActivity extends AppCompatActivity {
             editor.putString("_id",baseUser.getResult().get_id());
             editor.putString("name",baseUser.getResult().getTenhocvien());
             editor.putString("avatar",baseUser.getResult().getAvt());
+            editor.putString("gioitinh",baseUser.getResult().getGioitinh());
             editor.apply();
             loading.LoadingDismi();
             startActivity(new Intent(LoginWithMailActivity.this,MainActivity.class));
