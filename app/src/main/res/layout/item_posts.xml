@@ -118,6 +118,7 @@
                     android:layout_marginStart="14dp" />
             </LinearLayout>
             <LinearLayout
+                android:foreground="?attr/selectableItemBackground"
                 android:id="@+id/btn_comment"
                 android:layout_weight="1"
                 android:layout_width="0dp"

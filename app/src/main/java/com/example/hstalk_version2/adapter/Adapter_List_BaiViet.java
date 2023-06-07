@@ -1,6 +1,7 @@
 package com.example.hstalk_version2.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -16,6 +17,7 @@ import com.example.hstalk_version2.BR;
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ItemPostsBinding;
 import com.example.hstalk_version2.model.baiviet.BaseBaiViet;
+import com.example.hstalk_version2.views.BinhLuanActivity;
 
 import java.util.ArrayList;
 
@@ -52,6 +54,15 @@ public class Adapter_List_BaiViet extends RecyclerView.Adapter<Adapter_List_BaiV
                 }else {
                     holder.binding.icLike.setImageResource(R.mipmap.like);
                 }
+
+            }
+        });
+        holder.binding.btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, BinhLuanActivity.class);
+                intent.putExtra("id_baiviet",ds.get(holder.getAdapterPosition()).getBaiviet().get_id());
+                (context).startActivity(intent);
 
             }
         });
