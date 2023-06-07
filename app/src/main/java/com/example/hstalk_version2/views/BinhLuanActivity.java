@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.example.hstalk_version2.R;
@@ -43,6 +44,7 @@ public class BinhLuanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBinhLuanBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         mSocket.connect();
         mSocket.on("addComment",onNewComment);
         mSocket.emit("GETLISTBAIVIET",getIntent().getExtras().getString("id_baiviet"));
@@ -66,7 +68,9 @@ public class BinhLuanActivity extends AppCompatActivity {
                 finish();
             }
         });
+        getData();
     }
+
     private Emitter.Listener getList  = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
@@ -97,19 +101,28 @@ public class BinhLuanActivity extends AppCompatActivity {
                     BaseComment resComment = gson.fromJson(data.toString(),BaseComment.class);
                     ds.add(resComment);
                     adapter_list_comment.notifyDataSetChanged();
+                    if(ds.size() != 0)
+                    {
+                        binding.empty.setVisibility(View.GONE);
+                        binding.listBinhluan.setVisibility(View.VISIBLE);
+                    }else {
+                        binding.empty.setVisibility(View.VISIBLE);
+                        binding.listBinhluan.setVisibility(View.GONE);
+                    }
                 }
             });
         }
     };
     public void getData()
     {
+        adapter_list_comment = new Adapter_List_Comment(ds,this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        binding.listBinhluan.setLayoutManager(linearLayoutManager);
+        binding.listBinhluan.setAdapter(adapter_list_comment);
         if(ds.size() != 0)
         {
-            adapter_list_comment = new Adapter_List_Comment(ds,this);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-            binding.listBinhluan.setLayoutManager(linearLayoutManager);
-            binding.listBinhluan.setAdapter(adapter_list_comment);
+
             binding.empty.setVisibility(View.GONE);
             binding.listBinhluan.setVisibility(View.VISIBLE);
         }else {

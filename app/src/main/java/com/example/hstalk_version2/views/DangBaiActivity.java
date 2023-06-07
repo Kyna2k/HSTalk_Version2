@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityDangBaiBinding;
 import com.example.hstalk_version2.model.baiviet.BaiViet;
@@ -139,7 +140,8 @@ public class DangBaiActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Glide.with(DangBaiActivity.this).load(file).into(binding.hinh);
+                Glide.with(DangBaiActivity.this).load(file).diskCacheStrategy(DiskCacheStrategy.NONE )
+                        .skipMemoryCache(true).into(binding.hinh);
             }
         }
     });
@@ -152,7 +154,8 @@ public class DangBaiActivity extends AppCompatActivity {
                     Bundle bundle = intent.getExtras();
                     String x = bundle.getString("data");
                     file = new File(bundle.getString("data"));
-                    Glide.with(DangBaiActivity.this).load(file).into(binding.hinh);
+                    Glide.with(DangBaiActivity.this).load(file).diskCacheStrategy(DiskCacheStrategy.NONE )
+                            .skipMemoryCache(true).into(binding.hinh);
             }
         }
     });

@@ -12,6 +12,7 @@ import com.example.hstalk_version2.BR;
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ItemCommentBinding;
 import com.example.hstalk_version2.model.comment.BaseComment;
+import com.example.hstalk_version2.ultis.UI_Feature;
 import com.example.hstalk_version2.views.BinhLuanActivity;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class Adapter_List_Comment extends RecyclerView.Adapter<Adapter_List_Comm
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(ds.get(position));
+        holder.binding.time.setText(UI_Feature.getTime(ds.get(position).getComment().getNgay()));
     }
 
     @Override
