@@ -21,8 +21,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface API_SERVICES {
-    //public static final String BASE_Service = "http://192.168.0.104:3000/api/";
-    public static final String BASE_Service = "https://kynalab.com/api/";
+    public static final String BASE_Service = "http://192.168.0.105:3000/api/";
+    //public static final String BASE_Service = "https://kynalab.com/api/";
 
     @POST("login-with-email")
     Observable<BaseUser> LoginWithMail(@Body User user);
@@ -59,6 +59,8 @@ public interface API_SERVICES {
     @GET("danh-sach-bai-viet")
     Observable<ResBaiViet> getdanhsachbaiviet();
 
+    @POST("danh-sach-bai-cua-toi")
+    Observable<ResBaiViet> getdanhsachbaivietcuatoi(@Body User user);
     @Multipart
     @POST("add-bai-viet")
     Observable<ResBaiViet2> addbaiviet(@Part("Mauser")RequestBody Mauser, @Part("Noidung") RequestBody Noidung, @Part MultipartBody.Part Hinhanh);

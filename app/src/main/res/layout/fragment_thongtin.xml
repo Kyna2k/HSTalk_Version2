@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    tools:context=".fragment.ThongTinFragment"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:orientation="vertical"
+        android:background="#E5E5E5"
+        android:id="@+id/header_thongtin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            app:layout_scrollFlags="scroll"
+            android:paddingTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="21dp">
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="67dp"
+                    android:layout_height="67dp" />
+                <LinearLayout
+                    android:layout_marginTop="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="15dp">
+                    <TextView
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/intermedium" />
+                    <TextView
+                        android:id="@+id/gioitinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#757575"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/intermedium"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="21dp"
+                android:id="@+id/gioithieu"
+                android:text="Sinh viên trường FPT Polytechnic Thực tập sinh react native - company Atla...."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_m_chinhsua"
+                android:layout_marginTop="12dp"
+                android:textSize="12sp"
+                app:cornerRadius="10dp"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginBottom="27dp"
+                android:text="Chỉnh sửa hồ sơ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <FrameLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/baivietcuatoi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

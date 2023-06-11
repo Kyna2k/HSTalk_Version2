@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.hstalk_version2.fragment.BaiVietFragment;
 import com.example.hstalk_version2.fragment.CallFragment;
 import com.example.hstalk_version2.fragment.KhoaHocFragment;
+import com.example.hstalk_version2.fragment.ThongTinFragment;
 
 public class MainViewPagerAdapater extends FragmentStateAdapter {
     public MainViewPagerAdapater(@NonNull FragmentActivity fragmentActivity) {
@@ -24,7 +25,11 @@ public class MainViewPagerAdapater extends FragmentStateAdapter {
             case 1:
                 return new CallFragment().getInstance();
             case 2:
-                return new BaiVietFragment().getInstance();
+                return new BaiVietFragment().getInstance(1);
+            case 3 :
+                return new KhoaHocFragment().getInstance();
+            case 4:
+                return new ThongTinFragment().getInstance();
             default:
                 return new KhoaHocFragment().getInstance();
         }
@@ -32,6 +37,6 @@ public class MainViewPagerAdapater extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 5;
     }
 }

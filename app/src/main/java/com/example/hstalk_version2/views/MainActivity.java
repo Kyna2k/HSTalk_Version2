@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
                         binding.mainLayout.setCurrentItem(1);
                         break;
                     case R.id.MangXaHoi:
-                        binding.mainLayout.setCurrentItem(2);
+                        binding.mainLayout.setCurrentItem(2,false);
                         break;
                     case R.id.ThongBao:
-                        binding.mainLayout.setCurrentItem(3);
+                        binding.mainLayout.setCurrentItem(3,false);
                         break;
                     case R.id.HoSo:
-                        binding.mainLayout.setCurrentItem(4);
+                        binding.mainLayout.setCurrentItem(4,false);
                         break;
                 }
                 return true;

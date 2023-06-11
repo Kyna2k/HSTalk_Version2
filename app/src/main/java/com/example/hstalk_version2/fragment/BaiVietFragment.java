@@ -39,14 +39,16 @@ public class BaiVietFragment extends Fragment implements SwipeRefreshLayout.OnRe
     API api;
     Loading loading;
     private Adapter_List_BaiViet adapter_list_baiViet;
+    private int loai;
     public void BaiVietFragment()
     {
 
     }
-    public static BaiVietFragment getInstance()
+    public static BaiVietFragment getInstance(int type)
     {
         BaiVietFragment callFragment = new BaiVietFragment();
         Bundle bundle = new Bundle();
+        bundle.putInt("type",type);
         callFragment.setArguments(bundle);
         return callFragment;
     }
@@ -55,7 +57,7 @@ public class BaiVietFragment extends Fragment implements SwipeRefreshLayout.OnRe
         super.onCreate(savedInstanceState);
         if(getArguments() != null)
         {
-
+            loai = getArguments().getInt("type");
         }
     }
 
@@ -90,11 +92,23 @@ public class BaiVietFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private void GetList()
     {
         binding.reload.setRefreshing(true);
-        new CompositeDisposable().add(api.getAPI().getdanhsachbaiviet()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(this::dangnhap, this::loidangnhap)
-        );
+        User user = new User();
+        user.set_id(getActivity().getSharedPreferences("HocVien",MODE_PRIVATE).getString("_id",""));
+        if(loai == 1)
+        {
+            new CompositeDisposable().add(api.getAPI().getdanhsachbaiviet()
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::dangnhap, this::loidangnhap)
+            );
+        }else {
+            new CompositeDisposable().add(api.getAPI().getdanhsachbaivietcuatoi(user)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::dangnhap, this::loidangnhap)
+            );
+        }
+
     }
 
     private void loidangnhap(Throwable throwable)
