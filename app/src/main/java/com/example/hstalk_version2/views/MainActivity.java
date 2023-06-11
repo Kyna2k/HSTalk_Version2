@@ -16,8 +16,12 @@ import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.adapter.MainViewPagerAdapater;
 import com.example.hstalk_version2.databinding.ActivityMainBinding;
 import com.example.hstalk_version2.token.GenAccessToken;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.stringee.StringeeClient;
 import com.stringee.call.StringeeCall;
 import com.stringee.call.StringeeCall2;
@@ -104,6 +108,23 @@ public class MainActivity extends AppCompatActivity {
         });
         dangkyquyen();
         inCall();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@androidx.annotation.NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    Log.w("TAG", "Fetching FCM registration token failed", task.getException()); return;
+                } // Get new FCM registration token
+                String token = task.getResult();
+                Log.d("token", token);
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@androidx.annotation.NonNull Exception e) {
+
+            }
+        });
     }
     private void inCall()
     {
