@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="36dp"
+    android:paddingHorizontal="21dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -121,7 +121,7 @@
 <!--    tùy lòng hảo tâm-->
     <Button
         android:id="@+id/btn_capnhat"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Chỉnh sửa"
