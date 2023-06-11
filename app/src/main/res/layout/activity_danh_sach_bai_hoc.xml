@@ -10,10 +10,11 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/background_header_baihoc"
+        android:layout_height="396.35dp"
+        android:background="@mipmap/background_baihoc"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
+        android:adjustViewBounds="true"
         android:paddingTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listbaihoc"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/group__3_"

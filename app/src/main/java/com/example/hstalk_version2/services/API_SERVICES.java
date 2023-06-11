@@ -61,9 +61,16 @@ public interface API_SERVICES {
 
     @POST("danh-sach-bai-cua-toi")
     Observable<ResBaiViet> getdanhsachbaivietcuatoi(@Body User user);
+
     @Multipart
     @POST("add-bai-viet")
     Observable<ResBaiViet2> addbaiviet(@Part("Mauser")RequestBody Mauser, @Part("Noidung") RequestBody Noidung, @Part MultipartBody.Part Hinhanh);
 
+    @POST("get-thong-tin")
+    Observable<BaseUser> getthongtin(@Body User user);
 
+    @Multipart
+    @POST("cap-nhat-user")
+    Observable<BaseUser> capnhatthongtin(@Part("Mauser")RequestBody Mauser,@Part("Tenhocvien") RequestBody Tenhocvien, @Part("Mota") RequestBody Mota,
+                                         @Part("Gioitinh") RequestBody Gioitinh,@Part MultipartBody.Part Avt);
 }

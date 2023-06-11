@@ -18,9 +18,9 @@ import com.example.hstalk_version2.R;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type,Facebook,Google,Otp;
+    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type,Facebook,Google,Otp,Mota;
 
-    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type, String facebook, String google, String otp) {
+    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type, String facebook, String google, String otp, String mota) {
         this._id = _id;
         Tenhocvien = tenhocvien;
         Gioitinh = gioitinh;
@@ -33,6 +33,15 @@ public class User implements Serializable {
         Facebook = facebook;
         Google = google;
         Otp = otp;
+        Mota = mota;
+    }
+
+    public String getMota() {
+        return Mota;
+    }
+
+    public void setMota(String mota) {
+        Mota = mota;
     }
 
     public String getFacebook() {
@@ -141,7 +150,12 @@ public class User implements Serializable {
             Glide.with(imageView.getContext()).load(avt).centerCrop().circleCrop()
                     .placeholder(R.drawable.avatar_df)
                     .into(imageView);
+        }else {
+            Glide.with(imageView.getContext()).load(R.drawable.avatar_df).centerCrop().circleCrop()
+                    .placeholder(R.drawable.avatar_df)
+                    .into(imageView);
         }
+
 
     }
 }

@@ -56,7 +56,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_marginHorizontal="21dp"
-                android:id="@+id/gioithieu"
+                android:id="@+id/mota"
                 android:text="Sinh viên trường FPT Polytechnic Thực tập sinh react native - company Atla...."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

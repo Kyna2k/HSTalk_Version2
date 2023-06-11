@@ -40,7 +40,7 @@ public class Adapter_List_BaiHoc extends RecyclerView.Adapter<Adapter_List_BaiHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(ds.get(position));
-        holder.binding.btnBaihoc.setOnClickListener(new View.OnClickListener() {
+        holder.binding.playvideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, HocBaiActivity.class);

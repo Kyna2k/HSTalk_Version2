@@ -1,6 +1,7 @@
 package com.example.hstalk_version2.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.example.hstalk_version2.adapter.Adapter_List_BaiViet;
 import com.example.hstalk_version2.databinding.FragmentThongtinBinding;
 import com.example.hstalk_version2.services.API;
 import com.example.hstalk_version2.ultis.Loading;
+import com.example.hstalk_version2.views.CapNhatThongTinActivity;
 
 public class ThongTinFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
     private FragmentThongtinBinding binding;
@@ -57,10 +59,23 @@ public class ThongTinFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baivietcuatoi,new BaiVietFragment().getInstance(0)).commit();
+        binding.btnMChinhsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startActivity(new Intent(getActivity(), CapNhatThongTinActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         Glide.with(getActivity()).load(sharedPreferences.getString("avatar","")).circleCrop().placeholder(R.mipmap.avatar).into(binding.avatar);
         binding.ten.setText(sharedPreferences.getString("name", "@user" +sharedPreferences.getString("_id","")));
         binding.gioitinh.setText(sharedPreferences.getString("gioitinh",""));
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baivietcuatoi,new BaiVietFragment().getInstance(0)).commit();
+        binding.mota.setText(sharedPreferences.getString("mota","Sinh viên trường FPT Polytechnic Thực tập sinh react native - company Atla..."));
     }
 
     @Override

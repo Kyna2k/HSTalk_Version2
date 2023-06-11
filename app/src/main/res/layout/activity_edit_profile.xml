@@ -38,7 +38,7 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/avatar"
             android:layout_width="67dp"
             android:layout_height="67dp"
             android:src="@mipmap/avatar"
@@ -65,30 +65,10 @@
         android:fontFamily="@font/intermedium"/>
 
     <EditText
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:text="ChiCao"
-        android:paddingHorizontal="10dp"
-        android:textSize="14dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/intermedium"
-        android:background="@drawable/border_edt_username"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email hoặc SĐT"
-        android:layout_marginTop="20dp"
-        android:textSize="16dp"
-        android:textColor="#000000"
-        android:fontFamily="@font/intermedium"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:text="0925578308"
         android:paddingHorizontal="10dp"
         android:textSize="14dp"
         android:textColor="#000000"
@@ -105,10 +85,10 @@
         android:fontFamily="@font/intermedium"/>
 
     <EditText
+        android:id="@+id/gioitinh"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:text="Nam"
         android:paddingHorizontal="10dp"
         android:textSize="14dp"
         android:textColor="#000000"
@@ -125,10 +105,11 @@
         android:fontFamily="@font/intermedium"/>
 
     <EditText
+        android:id="@+id/mota"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="5dp"
-        android:text="Sinh viên trường FPT Polytechnic.\nThực tập sinh react-native - company Alta."
+        android:text=""
         android:paddingHorizontal="10dp"
         android:textSize="14dp"
         android:paddingTop="16.67dp"
@@ -139,6 +120,8 @@
 
 <!--    tùy lòng hảo tâm-->
     <Button
+        android:id="@+id/btn_capnhat"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Chỉnh sửa"
