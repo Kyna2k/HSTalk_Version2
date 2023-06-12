@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.adapter.Adapter_List_BaiViet;
 import com.example.hstalk_version2.databinding.FragmentBaivietBinding;
+import com.example.hstalk_version2.model.baiviet.BaiViet;
 import com.example.hstalk_version2.model.baiviet.BaseBaiViet;
 import com.example.hstalk_version2.model.baiviet.ResBaiViet;
 import com.example.hstalk_version2.model.user.BaseUser;
@@ -126,7 +127,7 @@ public class BaiVietFragment extends Fragment implements SwipeRefreshLayout.OnRe
         binding.reload.setRefreshing(false);
     }
 
-    private void getData(ArrayList<BaseBaiViet> list) {
+    private void getData(ArrayList<BaiViet> list) {
         adapter_list_baiViet = new Adapter_List_BaiViet(getContext(),list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);

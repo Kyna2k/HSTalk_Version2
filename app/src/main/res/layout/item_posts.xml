@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="model"
-            type="com.example.hstalk_version2.model.baiviet.BaseBaiViet" />
+            type="com.example.hstalk_version2.model.baiviet.BaiViet" />
     </data>
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:layout_marginTop="8dp"
         android:background="@color/white"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp">
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                bind:avatar="@{model.user.avt}"/>
+                bind:avatar="@{model.user.get(0).avt}" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="7dp">
+                android:layout_marginStart="7dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{model.user.tenhocvien}"
+                    android:fontFamily="@font/intermedium"
+                    android:text="@{model.user.get(0).tenhocvien}"
                     android:textColor="@color/black"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/intermedium" />
+                    android:textSize="16dp" />
+
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
@@ -47,14 +52,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="11dp"
             android:layout_marginHorizontal="10dp"
-            android:text="@{model.baiviet.noidung}"
+            android:text="@{model.noidung}"
             android:textColor="@color/black"
             android:textSize="16dp" />
         <ImageView
             android:layout_marginTop="11dp"
-            bind:hinhanh="@{model.baiviet.hinhanh}"
+            bind:hinhanh="@{model.hinhanh}"
             android:layout_width="match_parent"
             android:adjustViewBounds="true"
             android:layout_height="wrap_content"/>
@@ -130,6 +135,7 @@
                     android:layout_height="22dp"
                     android:src="@mipmap/comment"/>
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bình luận"

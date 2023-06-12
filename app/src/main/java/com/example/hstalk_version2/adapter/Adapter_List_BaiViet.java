@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hstalk_version2.BR;
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ItemPostsBinding;
+import com.example.hstalk_version2.model.baiviet.BaiViet;
 import com.example.hstalk_version2.model.baiviet.BaseBaiViet;
 import com.example.hstalk_version2.ultis.UI_Feature;
 import com.example.hstalk_version2.views.BinhLuanActivity;
@@ -24,9 +25,9 @@ import java.util.ArrayList;
 
 public class Adapter_List_BaiViet extends RecyclerView.Adapter<Adapter_List_BaiViet.ViewHolder>{
     private Context context;
-    private ArrayList<BaseBaiViet> ds;
+    private ArrayList<BaiViet> ds;
 
-    public Adapter_List_BaiViet(Context context, ArrayList<BaseBaiViet> ds) {
+    public Adapter_List_BaiViet(Context context, ArrayList<BaiViet> ds) {
         this.context = context;
         this.ds = ds;
     }
@@ -42,7 +43,7 @@ public class Adapter_List_BaiViet extends RecyclerView.Adapter<Adapter_List_BaiV
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(ds.get(position));
-        holder.binding.soluongbinhluan.setText(ds.get(position).getSoluongcomment() + " Bình luận");
+        holder.binding.soluongbinhluan.setText(ds.get(position).getComment().size() + " Bình luận");
         holder.binding.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,12 +63,17 @@ public class Adapter_List_BaiViet extends RecyclerView.Adapter<Adapter_List_BaiV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, BinhLuanActivity.class);
-                intent.putExtra("id_baiviet",ds.get(holder.getAdapterPosition()).getBaiviet().get_id());
+                intent.putExtra("id_baiviet",ds.get(holder.getAdapterPosition()).get_id());
                 (context).startActivity(intent);
 
             }
         });
-        holder.binding.time.setText(UI_Feature.getTime(ds.get(position).getBaiviet().getTime()));
+        if(ds.get(position).getTime() != null)
+        {
+            holder.binding.time.setText(UI_Feature.getTime(ds.get(position).getTime()));
+
+        }
+
     }
 
     @Override
