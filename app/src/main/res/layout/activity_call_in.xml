@@ -68,6 +68,26 @@
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="vertical"
         android:gravity="center">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/noidung_speak"
+                android:padding="16dp"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:fontFamily="@font/intermedium"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:text="speak"
+                android:id="@+id/btn_speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_chat"
             android:background="#80000000"

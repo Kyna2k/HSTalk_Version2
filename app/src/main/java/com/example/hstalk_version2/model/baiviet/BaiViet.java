@@ -96,5 +96,11 @@ public class BaiViet implements Serializable {
     public void setTime(String time) {
         Time = time;
     }
+    @BindingAdapter("hinhanh")
+    public static void loadImage(ImageView imageView, String avt) {
+        Glide.with(imageView.getContext()).load(avt != null && !avt.equals("") ? avt : R.drawable.avatar_df)
+                .placeholder(R.mipmap.ic_loading)
+                .into(imageView);
 
+    }
 }

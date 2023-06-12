@@ -153,17 +153,9 @@ public class User implements Serializable {
     }
     @BindingAdapter("avatar")
     public static void loadImage(ImageView imageView, String avt) {
-        if(avt != null && !avt.equals(""))
-        {
-//           Cái ngành l này địt mẹ nó , bố mày mà lấy vợ giàu có cái l ngành
-            Glide.with(imageView.getContext()).load(avt).centerCrop().circleCrop()
-                    .placeholder(R.drawable.avatar_df)
-                    .into(imageView);
-        }else {
-            Glide.with(imageView.getContext()).load(R.drawable.avatar_df).centerCrop().circleCrop()
-                    .placeholder(R.drawable.avatar_df)
-                    .into(imageView);
-        }
+        Glide.with(imageView.getContext()).load(avt != null && !avt.equals("") ? avt : R.drawable.avatar_df).centerCrop().circleCrop()
+                .placeholder(R.drawable.avatar_df)
+                .into(imageView);
 
 
     }

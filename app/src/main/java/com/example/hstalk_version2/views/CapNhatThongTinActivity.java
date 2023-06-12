@@ -220,7 +220,7 @@ public class CapNhatThongTinActivity extends AppCompatActivity {
     private void gethongtin(BaseUser baseUser) {
         if(baseUser.getResult() != null)
         {
-            Glide.with(this).load(baseUser.getResult().getAvt()).circleCrop().into(binding.avatar);
+            Glide.with(this).load(baseUser.getResult().getAvt() != null && !baseUser.getResult().getAvt().equals("") ? baseUser.getResult().getAvt() : R.drawable.avatar_df).circleCrop().into(binding.avatar);
             binding.mota.setText(baseUser.getResult().getMota());
             binding.gioitinh.setText(baseUser.getResult().getGioitinh());
             binding.name.setText(baseUser.getResult().getTenhocvien());

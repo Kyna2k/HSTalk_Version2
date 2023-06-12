@@ -1,18 +1,34 @@
 package com.example.hstalk_version2.views;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -38,7 +54,9 @@ import com.stringee.video.StringeeVideoTrack;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -59,6 +77,8 @@ public class CallInActivity extends AppCompatActivity {
     Adapter_List_Chat adapter_list_chat;
     RecyclerView listchat;
     EditText edt_chat;
+    TextView noidung_speak;
+    Button btn_speak;
     String id_rom_chat = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +97,32 @@ public class CallInActivity extends AppCompatActivity {
         edt_chat = findViewById(R.id.chat);
         layout_wait = findViewById(R.id.layout_wait);
         layout_accept = findViewById(R.id.layout_accept);
+        noidung_speak = findViewById(R.id.noidung_speak);
+        btn_speak = findViewById(R.id.btn_speak);
         //Kết nối với database hiện tại
         database = FirebaseFirestore.getInstance();
         //ReadDatabaseOnTime();
+        
+        btn_speak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                        "Say something…");
+
+                try {
+                    activityResultLauncher.launch(intent);
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                    Toast.makeText(CallInActivity.this, "Loi roi", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         traloi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +208,22 @@ public class CallInActivity extends AppCompatActivity {
         ReadDatabaseRealTime();
         getData();
     }
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        if(result.getData() != null){
+                            ArrayList<String> data = result.getData().getStringArrayListExtra(
+                                    RecognizerIntent.EXTRA_RESULTS);
+                            noidung_speak.setText(Objects.requireNonNull(data).get(0));
+                        }else{
+                            Toast.makeText(CallInActivity.this, "Oops! Dzui lòng thử lại.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
     private void nhancuocgoi() {
         String call_id = getIntent().getStringExtra("call_id");
         stringeeCall2 = MainActivity.callMap.get(call_id);
@@ -225,6 +284,7 @@ public class CallInActivity extends AppCompatActivity {
                             v_local.removeAllViews();
                             v_local.addView(stringeeCall22.getLocalView());
                             stringeeCall22.renderLocalView(true);
+
                         }
                     }
                 });
@@ -257,7 +317,7 @@ public class CallInActivity extends AppCompatActivity {
 
             @Override
             public void onCallInfo(StringeeCall2 stringeeCall2, JSONObject jsonObject) {
-                runOnUiThread(() -> Log.d("info", "onCallInfo: " + jsonObject.toString()));
+
             }
 
             @Override
@@ -274,6 +334,7 @@ public class CallInActivity extends AppCompatActivity {
         });
         stringeeCall2.setVideoCall(true);
         audioManager.setSpeakerphoneOn(stringeeCall2.isVideoCall());
+
         stringeeCall2.setQuality(StringeeCall2.VideoQuality.QUALITY_720P);
         stringeeCall2.ringing(new StatusListener() {
             @Override

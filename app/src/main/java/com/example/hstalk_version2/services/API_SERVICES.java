@@ -21,8 +21,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface API_SERVICES {
-    //public static final String BASE_Service = "http://192.168.136.200:3000/api/";
-    public static final String BASE_Service = "https://kynalab.com/api/";
+    public static final String BASE_Service = "http://192.168.0.105:3000/api/";
+    //public static final String BASE_Service = "https://kynalab.com/api/";
 
     @POST("login-with-email")
     Observable<BaseUser> LoginWithMail(@Body User user);
