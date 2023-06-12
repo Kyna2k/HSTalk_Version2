@@ -18,9 +18,9 @@ import com.example.hstalk_version2.R;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type,Facebook,Google,Otp,Mota;
+    private String _id,Tenhocvien,Gioitinh,Sdt,Email,Password,Avt,TrangThai,Type,Facebook,Google,Otp,Mota,token;
 
-    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type, String facebook, String google, String otp, String mota) {
+    public User(String _id, String tenhocvien, String gioitinh, String sdt, String email, String password, String avt, String trangThai, String type, String facebook, String google, String otp, String mota, String token) {
         this._id = _id;
         Tenhocvien = tenhocvien;
         Gioitinh = gioitinh;
@@ -34,6 +34,15 @@ public class User implements Serializable {
         Google = google;
         Otp = otp;
         Mota = mota;
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getMota() {

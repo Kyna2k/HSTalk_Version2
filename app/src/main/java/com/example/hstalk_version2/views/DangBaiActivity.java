@@ -59,7 +59,7 @@ public class DangBaiActivity extends AppCompatActivity {
         String avatar = getSharedPreferences("HocVien",MODE_PRIVATE).getString("avatar", "");
         String ten =  getSharedPreferences("HocVien",MODE_PRIVATE).getString("name", "");
         String gioitinh = getSharedPreferences("HocVien",MODE_PRIVATE).getString("gioitinh", "");
-        Glide.with(this).load(avatar).into(binding.avatar);
+        Glide.with(this).load(avatar).circleCrop().into(binding.avatar);
         binding.ten.setText(ten);
         binding.giotinh.setText(gioitinh);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
