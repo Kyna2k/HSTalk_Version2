@@ -5,15 +5,24 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".fragment.CallFragment"
+    tools:context=".fragment.NotificationFragment"
         android:layout_height="match_parent">
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        android:layout_marginHorizontal="21dp"
+        android:fontFamily="@font/interbold"
+        android:textColor="@color/black"
+        android:text="Thông báo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/reload"
         android:layout_weight="1"
-        android:paddingBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingHorizontal="21dp"
             android:id="@+id/list_call"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

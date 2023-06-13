@@ -97,32 +97,10 @@ public class CallInActivity extends AppCompatActivity {
         edt_chat = findViewById(R.id.chat);
         layout_wait = findViewById(R.id.layout_wait);
         layout_accept = findViewById(R.id.layout_accept);
-        noidung_speak = findViewById(R.id.noidung_speak);
-        btn_speak = findViewById(R.id.btn_speak);
         //Kết nối với database hiện tại
         database = FirebaseFirestore.getInstance();
         //ReadDatabaseOnTime();
-        
-        btn_speak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-                        "Say something…");
 
-                try {
-                    activityResultLauncher.launch(intent);
-                }catch (Exception e)
-                {
-                    e.printStackTrace();
-                    Toast.makeText(CallInActivity.this, "Loi roi", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
 
         traloi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,22 +186,7 @@ public class CallInActivity extends AppCompatActivity {
         ReadDatabaseRealTime();
         getData();
     }
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        if(result.getData() != null){
-                            ArrayList<String> data = result.getData().getStringArrayListExtra(
-                                    RecognizerIntent.EXTRA_RESULTS);
-                            noidung_speak.setText(Objects.requireNonNull(data).get(0));
-                        }else{
-                            Toast.makeText(CallInActivity.this, "Oops! Dzui lòng thử lại.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            });
+
     private void nhancuocgoi() {
         String call_id = getIntent().getStringExtra("call_id");
         stringeeCall2 = MainActivity.callMap.get(call_id);

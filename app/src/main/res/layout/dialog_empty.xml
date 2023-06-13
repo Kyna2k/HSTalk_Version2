@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:text="Rất tiết hiện tại, chưa có bài kiểm tra nào cả"
+        android:fontFamily="@font/interbold"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/sad"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Đóng"
+            android:id="@+id/okay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

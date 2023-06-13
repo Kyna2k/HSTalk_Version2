@@ -98,8 +98,8 @@ public class BaiViet implements Serializable {
     }
     @BindingAdapter("hinhanh")
     public static void loadImage(ImageView imageView, String avt) {
-        Glide.with(imageView.getContext()).load(avt != null && !avt.equals("") ? avt : R.drawable.avatar_df)
-                .placeholder(R.mipmap.ic_loading)
+        Glide.with(imageView.getContext()).load(avt)
+                .placeholder(R.drawable.avatar_df)
                 .into(imageView);
 
     }

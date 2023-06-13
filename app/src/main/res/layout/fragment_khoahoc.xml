@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
+    android:id="@+id/reload"
     android:background="@color/white"
     tools:context=".fragment.KhoaHocFragment"
     android:layout_height="match_parent">
-    <ImageView
-        android:src="@drawable/avatar_df"
-        android:id="@+id/avatar"
-        android:background="@drawable/border_teacher"
-        android:layout_width="48dp"
-        android:layout_height="48dp"/>
-    <TextView
-        android:id="@+id/name"
-        android:layout_marginTop="16dp"
-        android:textSize="24sp"
-        android:lineHeight="32sp"
-        android:fontFamily="@font/interbold"
-        android:textColor="@color/app_color"
-        android:text="Hi ChiCao, Welcome "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/reload"
-        android:layout_marginTop="28dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_caphoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <ImageView
+               android:src="@drawable/avatar_df"
+               android:id="@+id/avatar"
+               android:background="@drawable/border_teacher"
+               android:layout_width="48dp"
+               android:layout_height="48dp"/>
+           <TextView
+               android:id="@+id/name"
+               android:layout_marginTop="16dp"
+               android:textSize="24sp"
+               android:lineHeight="32sp"
+               android:fontFamily="@font/interbold"
+               android:textColor="@color/app_color"
+               android:text="Hi ChiCao, Welcome "
 
-</LinearLayout>
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+           <androidx.recyclerview.widget.RecyclerView
+               android:layout_marginTop="28dp"
+               android:layout_weight="1"
+               android:id="@+id/list_caphoc"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+       </LinearLayout>
+   </androidx.core.widget.NestedScrollView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

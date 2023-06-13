@@ -6,6 +6,7 @@ import com.example.hstalk_version2.model.baiviet.ResBaiViet;
 import com.example.hstalk_version2.model.baiviet.ResBaiViet2;
 import com.example.hstalk_version2.model.khoahoc.CapHoc;
 import com.example.hstalk_version2.model.khoahoc.ResultKhoaHoc;
+import com.example.hstalk_version2.model.notification.ResNotification;
 import com.example.hstalk_version2.model.trangthai.BaseTrangThai;
 import com.example.hstalk_version2.model.trangthai.TrangThaiRe;
 import com.example.hstalk_version2.model.user.BaseUser;
@@ -73,4 +74,8 @@ public interface API_SERVICES {
     @POST("cap-nhat-user")
     Observable<BaseUser> capnhatthongtin(@Part("Mauser")RequestBody Mauser,@Part("Tenhocvien") RequestBody Tenhocvien, @Part("Mota") RequestBody Mota,
                                          @Part("Gioitinh") RequestBody Gioitinh,@Part MultipartBody.Part Avt);
+
+
+    @POST("danh-sach-noti")
+    Observable<ResNotification> danhsachnoti(@Body User user);
 }

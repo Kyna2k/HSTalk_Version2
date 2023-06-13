@@ -49,9 +49,14 @@ public class Adapter_List_Call extends  RecyclerView.Adapter<Adapter_List_Call.V
                 call.Call(ds.get(holder.getAdapterPosition()).get_id(),ds.get(holder.getAdapterPosition()).getTenhocvien());
             }
         });
-        String[] names = ds.get(position).getTenhocvien().split("\\s+");
+        if( ds.get(position).getMota() == null || ds.get(position).getMota().equals(""))
+        {
+            holder.binding.mota.setText("Hãy kết nối với tớ <3");
+        }else {
+            holder.binding.mota.setText(ds.get(position).getMota());
 
-        holder.binding.ten.setText(names.length == 1 ? names[0] : names[names.length-1]);
+        }
+
     }
 
     @Override

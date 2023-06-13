@@ -153,7 +153,7 @@ public class User implements Serializable {
     }
     @BindingAdapter("avatar")
     public static void loadImage(ImageView imageView, String avt) {
-        Glide.with(imageView.getContext()).load(avt != null && !avt.equals("") ? avt : R.drawable.avatar_df).centerCrop().circleCrop()
+        Glide.with(imageView.getContext()).load(avt).centerCrop().circleCrop()
                 .placeholder(R.drawable.avatar_df)
                 .into(imageView);
 

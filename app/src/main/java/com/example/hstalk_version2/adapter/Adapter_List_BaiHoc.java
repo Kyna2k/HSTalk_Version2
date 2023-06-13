@@ -1,12 +1,16 @@
 package com.example.hstalk_version2.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,21 +52,43 @@ public class Adapter_List_BaiHoc extends RecyclerView.Adapter<Adapter_List_BaiHo
                 (context).startActivity(intent);
             }
         });
+
         holder.binding.btnKiemtra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, KiemTraBaiTapActivity.class);
-                intent.putExtra("debai",ds.get(holder.getAdapterPosition()).getBaitap());
-                intent.putExtra("caphoc",ds.get(holder.getAdapterPosition()).getMacaphoc());
-                intent.putExtra("mabaihoc",ds.get(holder.getAdapterPosition()).get_id());
-                (context).startActivity(intent);
+
+                if(!ds.get(position).getBaitap().equalsIgnoreCase("Emtry"))
+                {
+                    Intent intent = new Intent(context, KiemTraBaiTapActivity.class);
+                    intent.putExtra("debai",ds.get(holder.getAdapterPosition()).getBaitap());
+                    intent.putExtra("caphoc",ds.get(holder.getAdapterPosition()).getMacaphoc());
+                    intent.putExtra("mabaihoc",ds.get(holder.getAdapterPosition()).get_id());
+                    (context).startActivity(intent);
+                }else {
+                    diaglog();
+                }
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
         return ds.size();
+    }
+    private void diaglog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = ((Activity)context).getLayoutInflater().inflate(R.layout.dialog_empty,null);
+        builder.setView(view);
+        Button dong = view.findViewById(R.id.okay);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        dong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.example.hstalk_version2.model.notification.Notification" />
+    </data>
+    <LinearLayout
+        android:layout_marginTop="21dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            bind:avatar ="@{model.user.avt}"
+            android:src="@drawable/avatar_df"
+            android:layout_width="46dp"
+            android:layout_height="46dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginStart="7dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/interbold"
+                    android:textSize="15sp"
+                    android:text="@{model.user.tenhocvien}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/interregular"
+                    android:textSize="15sp"
+                    android:text="@{model.noidung}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/time"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/interregular"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -77,6 +77,18 @@ public class CapNhatThongTinActivity extends AppCompatActivity {
                 Dialog();
             }
         });
+        binding.btnOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CapNhatThongTinActivity.this, SelectLoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                SharedPreferences sharedPreferences = getSharedPreferences("setting",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("ISLOADING",false);
+                editor.commit();
+                startActivity(i);
+            }
+        });
 
     }
     private void updateProfile()
@@ -220,7 +232,7 @@ public class CapNhatThongTinActivity extends AppCompatActivity {
     private void gethongtin(BaseUser baseUser) {
         if(baseUser.getResult() != null)
         {
-            Glide.with(this).load(baseUser.getResult().getAvt() != null && !baseUser.getResult().getAvt().equals("") ? baseUser.getResult().getAvt() : R.drawable.avatar_df).circleCrop().into(binding.avatar);
+            Glide.with(this).load(baseUser.getResult().getAvt()).placeholder(R.drawable.avatar_df).circleCrop().into(binding.avatar);
             binding.mota.setText(baseUser.getResult().getMota());
             binding.gioitinh.setText(baseUser.getResult().getGioitinh());
             binding.name.setText(baseUser.getResult().getTenhocvien());

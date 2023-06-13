@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        SharedPreferences sharedPreferences = getSharedPreferences("setting",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("ISLOADING",true);
+        editor.commit();
         binding.bottommenu.setItemIconTintList(null);
         String _id = getSharedPreferences("HocVien",MODE_PRIVATE).getString("_id","");
         if(!_id.equals("") && _id != null)

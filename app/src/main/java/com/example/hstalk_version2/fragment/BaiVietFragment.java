@@ -74,7 +74,7 @@ public class BaiVietFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         String avatar = getActivity().getSharedPreferences("HocVien",MODE_PRIVATE).getString("avatar", "");
-        Glide.with(getActivity()).load(avatar.equals("")? R.drawable.avatar_df:avatar).circleCrop().into(binding.avatar);
+        Glide.with(getActivity()).load(avatar).placeholder(R.drawable.avatar_df).circleCrop().into(binding.avatar);
         api = new API();
         GetList();
         binding.reload.setOnRefreshListener(this);
