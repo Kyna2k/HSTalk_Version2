@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HSTalk_Version2</string>
+    <string name="app_name">HSTalk</string>
     <string name="signButton">Bạn chưa có tài khoản? <font color="#3A9732">Đăng ký</font> </string>
     <string name="channel_name">channelNameNotification1</string>
     <string name="channel_description">descriptionForNotifcation1</string>
