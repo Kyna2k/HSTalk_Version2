@@ -16,6 +16,9 @@ import com.example.hstalk_version2.services.API;
 import com.example.hstalk_version2.ultis.Loading;
 import com.example.hstalk_version2.ultis.UI_Feature;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -82,12 +85,23 @@ public class SignInActivity extends AppCompatActivity {
             if(binding.phoneOrEmail.getText().toString().matches("\\d+"))
             {
                 user.setSdt(binding.phoneOrEmail.getText().toString());
-            }else {
+            }else if(validate(binding.phoneOrEmail.getText().toString())) {
                 user.setEmail(binding.phoneOrEmail.getText().toString());
+            }else {
+                Toast.makeText(this, "Vui lòng nhập đúng định dạng email hoặc sdt", Toast.LENGTH_SHORT).show();
             }
             signinCheck(user);
+        }else {
+            Toast.makeText(this, "Vui lòng không để chống thông tin", Toast.LENGTH_SHORT).show();
         }
 
+    }
+    public  final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public  boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.matches();
     }
     private void signinCheck(User user)
     {

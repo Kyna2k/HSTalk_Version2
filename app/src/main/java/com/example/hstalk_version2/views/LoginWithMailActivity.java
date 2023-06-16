@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityLoginWithMailBinding;
@@ -57,8 +58,14 @@ public class LoginWithMailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.username.getText().toString();
                 String pass = binding.password.getText().toString();
-                loading.LoadingShow(LoginWithMailActivity.this,"Đang đăng nhập");
-                Login(email,pass);
+                if(!email.equalsIgnoreCase("") && !pass.equalsIgnoreCase(""))
+                {
+                    loading.LoadingShow(LoginWithMailActivity.this,"Đang đăng nhập");
+                    Login(email,pass);
+                }else {
+                    Toast.makeText(LoginWithMailActivity.this, "Vui lòng nhập đầy đủ email và password", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -100,17 +107,25 @@ public class LoginWithMailActivity extends AppCompatActivity {
     private void dangnhap(BaseUser baseUser) {
         if(baseUser.getResult() != null)
         {
-            SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("_id",baseUser.getResult().get_id());
-            editor.putString("name",baseUser.getResult().getTenhocvien());
-            editor.putString("avatar",baseUser.getResult().getAvt());
-            editor.putString("gioitinh",baseUser.getResult().getGioitinh());
-            editor.putString("mota",baseUser.getResult().getMota());
-            editor.apply();
+
+            Toast.makeText(this, baseUser.getMess(), Toast.LENGTH_SHORT).show();
             loading.LoadingDismi();
-            startActivity(new Intent(LoginWithMailActivity.this,MainActivity.class));
+            if(baseUser.getStatus() == 0)
+            {
+                SharedPreferences sharedPreferences = getSharedPreferences("HocVien",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("_id",baseUser.getResult().get_id());
+                editor.putString("name",baseUser.getResult().getTenhocvien());
+                editor.putString("avatar",baseUser.getResult().getAvt());
+                editor.putString("gioitinh",baseUser.getResult().getGioitinh());
+                editor.putString("mota",baseUser.getResult().getMota());
+                editor.apply();
+                startActivity(new Intent(LoginWithMailActivity.this,MainActivity.class));
+
+            }
+
         }else {
+            Toast.makeText(this, baseUser.getMess(), Toast.LENGTH_SHORT).show();
             loading.LoadingDismi();
         }
     }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivitySignIn2Binding;
@@ -42,20 +43,28 @@ public class SignIn2Activity extends AppCompatActivity {
         binding.btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loading.LoadingShow(SignIn2Activity.this,"Đang xử lý");
+
                 User user = (User) getIntent().getExtras().getSerializable("user");
-                if(binding.passInSignin.getText().toString().equals(binding.repassInSignin.getText().toString()))
+                if(!binding.repassInSignin.getText().toString().equals("") && !binding.passInSignin.getText().toString().equals(""))
                 {
 
-                    user.setPassword(binding.passInSignin.getText().toString());
-                    if(getIntent().getExtras().getInt("ACTION") == 2)
+                    if(binding.passInSignin.getText().toString().equals(binding.repassInSignin.getText().toString()))
                     {
-                        resetpass(user);
-                    }else {
-                        SignIn(user);
+                        loading.LoadingShow(SignIn2Activity.this,"Đang xử lý");
+                        user.setPassword(binding.passInSignin.getText().toString());
 
+                        if(getIntent().getExtras().getInt("ACTION") == 2)
+                        {
+                            resetpass(user);
+                        }else {
+                            SignIn(user);
+
+                        }
                     }
+                }else {
+                    Toast.makeText(SignIn2Activity.this, "Vui lòng không để trông thông tin mật khẩu", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }

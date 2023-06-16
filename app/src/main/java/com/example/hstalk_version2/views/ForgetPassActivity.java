@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.hstalk_version2.R;
 import com.example.hstalk_version2.databinding.ActivityForgetPassBinding;
@@ -15,6 +16,9 @@ import com.example.hstalk_version2.model.user.User;
 import com.example.hstalk_version2.services.API;
 import com.example.hstalk_version2.ultis.Loading;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -54,13 +58,34 @@ public class ForgetPassActivity extends AppCompatActivity {
         binding.btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loading.LoadingShow(ForgetPassActivity.this,"Đang gửi yêu cầu");
-                checkemail(binding.username.getText().toString());
+                if(!binding.username.getText().toString().equals(""))
+                {
+                    if(validate(binding.username.getText().toString()))
+                    {
+                        checkemail(binding.username.getText().toString());
+                    }else {
+                        Toast.makeText(ForgetPassActivity.this, "Email chưa đúng định dạng", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }else {
+                    Toast.makeText(ForgetPassActivity.this, "Vui lòng không để trống email", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }
+    public  final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public  boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.matches();
+    }
     private void checkemail(String email)
     {
+        loading.LoadingShow(ForgetPassActivity.this,"Đang gửi yêu cầu");
+
         user = new User();
         user.setEmail(email);
         new CompositeDisposable().add(api.getAPI().sendOtpCode(user)
@@ -84,12 +109,13 @@ public class ForgetPassActivity extends AppCompatActivity {
         if(baseUser.getMess() != null && baseUser.getStatus() == 1)
         {
             loading.LoadingDismi();
-
             Intent intent = new Intent(ForgetPassActivity.this,CheckOTPActivity.class);
             intent.putExtras(bundle);
             startActivity(intent);
+            Toast.makeText(this, baseUser.getMess(), Toast.LENGTH_SHORT).show();
         }else {
             loading.LoadingDismi();
+            Toast.makeText(this, baseUser.getMess(), Toast.LENGTH_SHORT).show();
         }
     }
 }
