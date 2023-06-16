@@ -1,0 +1,102 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/black"
+    tools:context=".views.TokTokActivity">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/switch_camera"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="16dp"
+        android:src="@mipmap/switch_came"
+        android:text="chuphinh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/hinh1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/i"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoom" />
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/hinh2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/love"
+        app:layout_constraintEnd_toStartOf="@+id/hinh3"
+        app:layout_constraintStart_toEndOf="@+id/hinh1"
+        app:layout_constraintTop_toBottomOf="@+id/zoom" />
+
+    <TextView
+        android:id="@+id/countdown_chuphinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/previewView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_marginTop="30dp"
+
+        android:id="@+id/hinh3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:src="@mipmap/y"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoom" />
+    <ImageView
+        android:layout_marginTop="30dp"
+
+        android:id="@+id/chuphinh"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="chuphinh"
+        android:layout_margin="16dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Hãy giữ kí hiệu trong: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/chuphinh"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <SeekBar
+        android:id="@+id/zoom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/switch_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

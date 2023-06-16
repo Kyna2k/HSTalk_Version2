@@ -34,6 +34,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".KetQuaTokTokActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.TokTokActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.SelectLoginActivity"
             android:exported="false" />
         <activity

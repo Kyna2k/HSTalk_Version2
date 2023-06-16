@@ -29,6 +29,7 @@ import com.example.hstalk_version2.services.API;
 import com.example.hstalk_version2.ultis.Loading;
 import com.example.hstalk_version2.views.CheckOTPActivity;
 import com.example.hstalk_version2.views.SignIn2Activity;
+import com.example.hstalk_version2.views.TokTokActivity;
 
 import java.util.ArrayList;
 
@@ -80,6 +81,12 @@ public class KhoaHocFragment extends Fragment implements SwipeRefreshLayout.OnRe
         loading.LoadingShow(getContext(),"Đang tải dự liệu");
         getDS();
         binding.reload.setOnRefreshListener(this);
+        binding.btnMToktok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), TokTokActivity.class));
+            }
+        });
 
 
     }
