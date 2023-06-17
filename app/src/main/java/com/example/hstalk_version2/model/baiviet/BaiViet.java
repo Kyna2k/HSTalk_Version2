@@ -99,7 +99,6 @@ public class BaiViet implements Serializable {
     @BindingAdapter("hinhanh")
     public static void loadImage(ImageView imageView, String avt) {
         Glide.with(imageView.getContext()).load(avt)
-                .placeholder(R.drawable.avatar_df)
                 .into(imageView);
 
     }

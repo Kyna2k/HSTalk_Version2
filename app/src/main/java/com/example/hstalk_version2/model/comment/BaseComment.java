@@ -54,7 +54,6 @@ public class BaseComment implements Serializable {
         {
 //           Cái ngành l này địt mẹ nó , bố mày mà lấy vợ giàu có cái l ngành
             Glide.with(imageView.getContext()).load(avt)
-                    .placeholder(R.drawable.avatar_df)
                     .into(imageView);
         }
 
